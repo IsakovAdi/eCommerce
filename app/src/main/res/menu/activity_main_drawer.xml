@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_dashboard_24"
+            android:title="Главная" />
+
+        <item
+            android:id="@+id/nav_mycatalog"
+            android:visible="false"
+            android:icon="@drawable/ic_baseline_apps_24"
+            android:title="Мои объявления" />
+
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_baseline_search_24"
+            android:title="Поиск" />
+
+        <item
+            android:id="@+id/nav_favourites"
+            android:icon="@drawable/ic_baseline_star_24"
+            android:title="Избранные" />
+
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/notifications_drawer"
+            android:title="Уведомления" />
+
+        <item
+            android:id="@+id/login"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="Войти" />
+
+        <item
+            android:id="@+id/signout"
+            android:visible="false"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="Выйти" />
+
+    </group>
+</menu>
