@@ -27,9 +27,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -55,7 +57,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     FrameLayout mainFrameLayout;
     FirebaseAuth auth;
-    FirebaseFirestore db;
+    DatabaseReference reference;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -109,7 +111,6 @@ public class DashboardActivity extends AppCompatActivity {
         toggle.syncState();
 
         FirebaseApp.initializeApp(this);
-        db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
         //Navigation Menu
@@ -123,14 +124,17 @@ public class DashboardActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (firebaseUser != null){
-            DocumentReference docRef = db.collection("USERS").document(firebaseUser.getUid());
-            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+            reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+            reference.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    User user = documentSnapshot.toObject(User.class);
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User user = snapshot.getValue(User.class);
                     if (user != null) {
                         navUserName.setText(user.getUsername());
+                        navUserName.setVisibility(View.VISIBLE);
                         navUserEmail.setText(user.getEmail());
+                        navUserEmail.setVisibility(View.VISIBLE);
 
                         MenuItem loginItem = (MenuItem) menu.findItem(R.id.login);
                         loginItem.setVisible(false);
@@ -139,6 +143,11 @@ public class DashboardActivity extends AppCompatActivity {
                         MenuItem signOutItem = (MenuItem) menu.findItem(R.id.signout);
                         signOutItem.setVisible(true);
                     }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
                 }
             });
         }

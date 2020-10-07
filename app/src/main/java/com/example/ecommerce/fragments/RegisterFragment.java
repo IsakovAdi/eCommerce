@@ -30,8 +30,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;
@@ -49,7 +49,8 @@ public class RegisterFragment extends Fragment {
     ProgressBar signupProgress;
 
     FirebaseAuth firebaseAuth;
-    FirebaseFirestore firebaseFirestore;
+    DatabaseReference reference;
+
     String emailPattern = "[a-zA=z0-9._-]+@[a-z]+.[a-z]+";
 
 
@@ -71,7 +72,6 @@ public class RegisterFragment extends Fragment {
 
         //Firebase config
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
 
         return view;
     }
@@ -171,9 +171,10 @@ public class RegisterFragment extends Fragment {
 
                                     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                                    firebaseFirestore.collection("USERS")
-                                            .document(firebaseUser.getUid())
-                                            .set(user)
+                                    reference = FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(firebaseUser.getUid());
+
+                                    reference.setValue(user)
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {

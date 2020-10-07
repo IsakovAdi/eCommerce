@@ -1,5 +1,6 @@
 package com.example.ecommerce.goodfragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,7 +26,14 @@ import com.example.ecommerce.R;
 import com.example.ecommerce.adapters.GoodCategoryAdapter;
 import com.example.ecommerce.models.CategoryModel;
 import com.example.ecommerce.utils.Data;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.util.ArrayList;
+import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -37,6 +46,9 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
     private ImageButton imageButton;
     private static final int PICK_IMAGE_REQUEST = 1;
     Uri imageUri;
+    FirebaseStorage storage;
+    StorageReference reference;
+    Button addButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,11 +58,23 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
 //        mainFrameLayout = view.findViewById(R.id.add_frame_layout);
 
         imageButton = view.findViewById(R.id.imageButton);
+        addButton = view.findViewById(R.id.add_btn);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImages();
+            }
+        });
+
         imageButton.setOnClickListener(this);
         //Spinner
         categorySpinner = view.findViewById(R.id.category_spinner);
         subSpinner = view.findViewById(R.id.subcategory_spinner);
         subSpinner.setLabel("Подкатегория");
+
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
 
         GoodCategoryAdapter adapter = new GoodCategoryAdapter(getContext(), categoryModelArrayList);
         categorySpinner.setAdapter(adapter);
@@ -121,7 +145,6 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
                 }
 
                 subSpinner.setAdapter(subAdapter);
-
                 Toast.makeText(getContext(), String.valueOf(adapterView.getItemAtPosition(i)), Toast.LENGTH_SHORT).show();
             }
 
@@ -165,7 +188,37 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    public void uploadImages(){
+        if (imageUri != null){
+
+            StorageReference ref =  reference.child("images/" + UUID.randomUUID().toString());
+
+            final ProgressDialog dialog = new ProgressDialog(getContext());
+            dialog.setTitle("Загрузка...");
+            dialog.show();
+
+            ref.putFile(imageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            dialog.dismiss();
+                            Toast.makeText(getContext(), "Image uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                            double progress = (100.0 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                            dialog.setMessage("Загружено: " + (int)(progress) + "%");
+                        }
+                    });
+
+        }
+
     }
 
     @Override
@@ -173,6 +226,14 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
             && data != null && data.getData() != null){
+
+            if (data.getClipData() != null) {
+                Toast.makeText(getContext(), "Multiple", Toast.LENGTH_SHORT).show();
+            }
+
+            if (data.getData() != null){
+                Toast.makeText(getContext(), "Single", Toast.LENGTH_SHORT).show();
+            }
             imageUri = data.getData();
         }
     }
