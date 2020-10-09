@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -31,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -49,6 +52,10 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
     FirebaseStorage storage;
     StorageReference reference;
     Button addButton;
+    MaterialSpinner currencySpinner;
+    SwitchCompat dogovornayaSwitch;
+    MaterialEditText price;
+    String[] currencies = new String[]{"KGS", "USD"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +66,9 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
 
         imageButton = view.findViewById(R.id.imageButton);
         addButton = view.findViewById(R.id.add_btn);
+        currencySpinner = view.findViewById(R.id.currency_spinner);
+        dogovornayaSwitch = view.findViewById(R.id.dogovornaya_switch);
+        price = view.findViewById(R.id.price);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +90,35 @@ public class GoodCategoryFragment extends Fragment implements View.OnClickListen
         categorySpinner.setAdapter(adapter);
         categorySpinner.setLabel("Категория");
 //        categorySpinner.setError("Пожалуйста выберите категорию");
+
+        dogovornayaSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    price.setEnabled(false);
+                    currencySpinner.setEnabled(false);
+                }
+                else{
+                    price.setEnabled(true);
+                    currencySpinner.setEnabled(true);
+                }
+            }
+        });
+
+        ArrayAdapter<String> priceAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, currencies);
+        priceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currencySpinner.setAdapter(priceAdapter);
+        currencySpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         categorySpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
