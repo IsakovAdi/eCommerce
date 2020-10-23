@@ -24,6 +24,7 @@ import java.util.List;
 
 public class GoodCategoryAdapter extends BaseAdapter {
 
+
     ArrayList<CategoryModel> categoryModels;
     Context context;
 

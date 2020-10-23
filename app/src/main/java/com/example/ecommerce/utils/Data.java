@@ -1,6 +1,7 @@
 package com.example.ecommerce.utils;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.models.CarModels;
 import com.example.ecommerce.models.CategoryModel;
 import com.example.ecommerce.models.SecondCategoryModel;
 
@@ -9,18 +10,2430 @@ import java.util.List;
 
 public class Data {
 
-    public static List<String> getTransportSubCategories(){
+    public static List<String> getTransportSubCategories() {
         List<String> categories = new ArrayList<>();
-        categories.add("Автомобили");
+        categories.add("Легковые автомобили");
         categories.add("Автозапчасти и аксессуары");
         categories.add("Мотоциклы и мопеды");
+        categories.add("Мотозапчасти и аксессуары");
         categories.add("Грузовой и с/х транспорт");
+        categories.add("Запчасти для грузовой и с/х техники");
         categories.add("Водный транспорт");
         categories.add("Другой транспорт");
+
         return categories;
     }
 
-    public static List<String> getHomeSubCategories(){
+    public static List<String> getAcuraSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("CL");
+        models.add("CSX");
+        models.add("EL");
+        models.add("ILX");
+        models.add("Integra");
+        models.add("Legend");
+        models.add("MDX");
+        models.add("NSX");
+        models.add("RDX");
+        models.add("RL");
+        models.add("RLX");
+        models.add("RSX");
+        models.add("SLX");
+        models.add("TL");
+        models.add("TSX");
+        models.add("ZDX");
+        models.add("TLX");
+        return models;
+    }
+    public static List<String> getAlfaRomeoSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("145");
+        models.add("146");
+        models.add("147");
+        models.add("155");
+        models.add("156");
+        models.add("159");
+        models.add("164");
+        models.add("166");
+        models.add("33");
+        models.add("4C");
+        models.add("6");
+        models.add("75");
+        models.add("8C Competizione");
+        models.add("90");
+        models.add("Alfasud");
+        models.add("Alfetta");
+        models.add("Arna");
+        models.add("Brera");
+        models.add("Giulia");
+        models.add("Giulietta");
+        models.add("GT");
+        models.add("GTA Coupe");
+        models.add("GTV");
+        models.add("MiTo");
+        models.add("Montreal");
+        models.add("RZ");
+        models.add("Spider");
+        models.add("Sprint");
+        models.add("SZ");
+        models.add("Disco Volante");
+        models.add("2600");
+        models.add("105/115");
+        return models;
+    }
+    public static List<String> getAlpinaSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("B10");
+        models.add("B11");
+        models.add("B12");
+        models.add("B3");
+        models.add("B4");
+        models.add("B5");
+        models.add("B6");
+        models.add("B7");
+        models.add("B8");
+        models.add("B9");
+        models.add("C1");
+        models.add("C2");
+        models.add("D10");
+        models.add("D3");
+        models.add("D5");
+        models.add("Roadster");
+        models.add("XD3");
+        return models;
+    }
+    public static List<String> getAudiSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("100");
+        models.add("200");
+        models.add("50");
+        models.add("80");
+        models.add("90");
+        models.add("A1");
+        models.add("A2");
+        models.add("A3");
+        models.add("A4 allroad");
+        models.add("A4");
+        models.add("A5");
+        models.add("A6 allroad");
+        models.add("A7");
+        models.add("A8");
+        models.add("Cabriolet");
+        models.add("Coupe");
+        models.add("NSU RO 80");
+        models.add("Q3");
+        models.add("Q5");
+        models.add("Q7");
+        models.add("Quattro");
+        models.add("R8");
+        models.add("RS Q3");
+        models.add("RS2");
+        models.add("RS3");
+        models.add("RS4");
+        models.add("RS5");
+        models.add("RS6");
+        models.add("RS7");
+        models.add("S1");
+        models.add("S2");
+        models.add("S3");
+        models.add("S4");
+        models.add("S5");
+        models.add("S6");
+        models.add("S7");
+        models.add("S8");
+        models.add("SQ5");
+        models.add("TT");
+        models.add("V8");
+        models.add("TT RS");
+        models.add("TTS");
+        models.add("920");
+        return models;
+    }
+    public static List<String> getBentleySeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Arnage");
+        models.add("Azure");
+        models.add("Brooklands");
+        models.add("Continental");
+        models.add("Continental Flying Spur");
+        models.add("Continental GT");
+        models.add("Eight");
+        models.add("Flying Spur");
+        models.add("Mulsanne");
+        models.add("Turbo R");
+        models.add("S");
+        models.add("Bentayga");
+        return models;
+    }
+    public static List<String> getBMWSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("A2 (E10)");
+        models.add("1 серия");
+        models.add("2 серия");
+        models.add("2 серия Active Tourer");
+        models.add("3 серия");
+        models.add("4 серия");
+        models.add("5 серия");
+        models.add("6 серия");
+        models.add("7 серия");
+        models.add("8 серия");
+        models.add("i3");
+        models.add("i8");
+        models.add("X1");
+        models.add("X3");
+        models.add("X4");
+        models.add("X5");
+        models.add("X6");
+        models.add("Z1");
+        models.add("Z3");
+        models.add("Z4");
+        models.add("Z8");
+        models.add("1M");
+        models.add("M3");
+        models.add("M4");
+        models.add("M5");
+        models.add("M6");
+        models.add("X5 M");
+        models.add("X5 M");
+        models.add("Z3 M");
+        models.add("Z4 M");
+        models.add("2 серия Grand Tourer");
+        models.add("2000 C/CS");
+        models.add("315");
+        models.add("321");
+        models.add("326");
+        models.add("340");
+        models.add("M2");
+        models.add("X7");
+        return models;
+    }
+    public static List<String> getBYDSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("E6");
+        models.add("F0");
+        models.add("F3");
+        models.add("F6");
+        models.add("F8");
+        models.add("Flyer");
+        models.add("G3");
+        models.add("G6");
+        models.add("L3");
+        models.add("M6");
+        models.add("S6");
+        models.add("F5");
+        return models;
+    }
+    public static List<String> getCadillacSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Allante");
+        models.add("ATS");
+        models.add("BLS");
+        models.add("Brougham");
+        models.add("Catera");
+        models.add("CTS");
+        models.add("De Ville");
+        models.add("DTS");
+        models.add("Eldorado");
+        models.add("Escalade");
+        models.add("Fleetwood");
+        models.add("LSE");
+        models.add("Seville");
+        models.add("Sixty Special");
+        models.add("SRX");
+        models.add("STS");
+        models.add("XLR");
+        models.add("XTS");
+        models.add("ELR");
+        models.add("CTS-V");
+        models.add("ATS-V");
+        models.add("Series 62");
+        models.add("CT6");
+        models.add("XT5");
+        return models;
+    }
+    public static List<String> getCherySeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Amulet (A15)");
+        models.add("Bonus (A13)");
+        models.add("CrossEastar (B14)");
+        models.add("Fora (A21)");
+        models.add("IndiS (S18D)");
+        models.add("Kimo (A1)");
+        models.add("Oriental Son (B11)");
+        models.add("QQ6 (S21)");
+        models.add("Sweet (QQ)");
+        models.add("Tiggo (T11)");
+        models.add("Very");
+        models.add("M11 (A3)");
+        models.add("Bonus 3 (E3/A19)");
+        models.add("Tiggo 5");
+        models.add("Arrizo 7");
+        return models;
+    }
+    public static List<String> getChevroletSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Alero");
+        models.add("Astra");
+        models.add("Astro");
+        models.add("Avalanche");
+        models.add("Aveo");
+        models.add("Beretta");
+        models.add("Blazer");
+        models.add("Blazer K5");
+        models.add("C-10");
+        models.add("Camaro");
+        models.add("Caprice");
+        models.add("Captiva");
+        models.add("Cavalier");
+        models.add("Celebrity");
+        models.add("Celta");
+        models.add("Chevette");
+        models.add("Citation");
+        models.add("Classic");
+        models.add("Cobalt");
+        models.add("Colorado");
+        models.add("Corsa");
+        models.add("Corsica");
+        models.add("Corvette");
+        models.add("Cruze (HR)");
+        models.add("Cruze");
+        models.add("Epica");
+        models.add("Equinox");
+        models.add("Evanda");
+        models.add("Express");
+        models.add("HHR");
+        models.add("Impala");
+        models.add("Kalos");
+        models.add("Lacetti");
+        models.add("Lanos");
+        models.add("Lumina");
+        models.add("Lumina APV");
+        models.add("LUV D-MAX");
+        models.add("Malibu");
+        models.add("Metro");
+        models.add("Monte Carlo");
+        models.add("Monza");
+        models.add("MW");
+        models.add("Niva");
+        models.add("Nubira");
+        models.add("Omega");
+        models.add("Orlando");
+        models.add("Prizm");
+        models.add("Rezzo");
+        models.add("S-10 Pickup");
+        models.add("Sail");
+        models.add("Sonic");
+        models.add("Spark");
+        models.add("SSR");
+        models.add("Starcraft");
+        models.add("Suburban");
+        models.add("Tahoe");
+        models.add("Tavera");
+        models.add("Tracker");
+        models.add("TrailBlazer");
+        models.add("Trans Sport");
+        models.add("Traverse");
+        models.add("Uplander");
+        models.add("Van");
+        models.add("Vectra");
+        models.add("Venture");
+        models.add("Viva");
+        models.add("Volt");
+        models.add("Zafira");
+        models.add("Silverado");
+        models.add("SS");
+        models.add("El Camino");
+        models.add("Master");
+        models.add("Special Deluxe");
+        models.add("Matiz");
+        return models;
+
+    }
+    public static List<String> getChryslerSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("200");
+        models.add("300C");
+        models.add("300M");
+        models.add("Aspen");
+        models.add("Cirrus");
+        models.add("Concorde");
+        models.add("Crossfire");
+        models.add("Dynasty");
+        models.add("Fifth Avenue");
+        models.add("Imperial");
+        models.add("Intrepid");
+        models.add("Le Baron");
+        models.add("LHS");
+        models.add("Nassau");
+        models.add("Neon");
+        models.add("NEW Yorker");
+        models.add("Pacifica");
+        models.add("Prowler");
+        models.add("PT Cruiser");
+        models.add("Saratoga");
+        models.add("Sebring");
+        models.add("Stratus");
+        models.add("TC by Maserati");
+        models.add("Town & Country");
+        models.add("Viper");
+        models.add("Vision");
+        models.add("Voyager");
+        models.add("300C SRT8");
+        models.add("Imperial Crown");
+        return models;
+    }
+    public static List<String> getCitroenSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("2 CV");
+        models.add("AMI");
+        models.add("Ax");
+        models.add("Berlingo");
+        models.add("BX");
+        models.add("C-Crosser");
+        models.add("C-Elysee");
+        models.add("C1");
+        models.add("C2");
+        models.add("C3");
+        models.add("C3 Picasso");
+        models.add("C4 Aircross");
+        models.add("C4 Cactus");
+        models.add("C4");
+        models.add("C4 Picasso");
+        models.add("C5");
+        models.add("C6");
+        models.add("C8");
+        models.add("CX");
+        models.add("DS3");
+        models.add("DS4");
+        models.add("DS5");
+        models.add("Dyane");
+        models.add("Evasion");
+        models.add("GS");
+        models.add("LNA");
+        models.add("Saxo");
+        models.add("Visa");
+        models.add("Xantia");
+        models.add("XM");
+        models.add("Xsara");
+        models.add("Xsara Picasso");
+        models.add("ZX");
+        models.add("Jumpy");
+        models.add("C-ZERO");
+        models.add("Traction Avant");
+        return models;
+    }
+    public static List<String> getDaewooSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Arcadia");
+        models.add("Chairman");
+        models.add("Damas");
+        models.add("Espero");
+        models.add("Evanda");
+        models.add("G2X");
+        models.add("Gentra");
+        models.add("Kalos");
+        models.add("Korando");
+        models.add("Lacetti");
+        models.add("Lanos (Sens)");
+        models.add("LE Mans");
+        models.add("Leganza");
+        models.add("Magnus");
+        models.add("Matiz");
+        models.add("Musso");
+        models.add("Nexia");
+        models.add("Nubira");
+        models.add("Prince");
+        models.add("Racer");
+        models.add("Rezzo");
+        models.add("Tacuma");
+        models.add("Tico");
+        models.add("Tosca");
+        models.add("Winstorm");
+        return models;
+    }
+    public static List<String> getDaihatsuSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Altis");
+        models.add("Applause");
+        models.add("Atrai");
+        models.add("Be-go");
+        models.add("Boon");
+        models.add("Ceria");
+        models.add("Charade");
+        models.add("Charmant");
+        models.add("Coo");
+        models.add("Copen");
+        models.add("Cuore");
+        models.add("Delta Wagon");
+        models.add("Esse");
+        models.add("Feroza");
+        models.add("Gran Move");
+        models.add("Leeza");
+        models.add("Materia");
+        models.add("MAX");
+        models.add("Mira Gino");
+        models.add("Mira");
+        models.add("Move");
+        models.add("Naked");
+        models.add("Opti");
+        models.add("Pyzar");
+        models.add("Rocky");
+        models.add("Sirion");
+        models.add("Sonica");
+        models.add("Storia");
+        models.add("Taft");
+        models.add("Tanto");
+        models.add("Terios");
+        models.add("Trevis");
+        models.add("Wildcat");
+        models.add("Xenia");
+        models.add("YRV");
+        models.add("Midget II");
+        models.add("Move Latte");
+        return models;
+    }
+    public static List<String> getDodgeSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("600");
+        models.add("Aries");
+        models.add("Avenger");
+        models.add("Caliber");
+        models.add("Caravan");
+        models.add("Challenger");
+        models.add("Charger");
+        models.add("Dakota");
+        models.add("Dart");
+        models.add("Daytona");
+        models.add("Durango");
+        models.add("Dynasty");
+        models.add("Intrepid");
+        models.add("Journey");
+        models.add("Magnum");
+        models.add("Monaco");
+        models.add("Neon");
+        models.add("Nitro");
+        models.add("Omni");
+        models.add("RAM");
+        models.add("Ramcharger");
+        models.add("Shadow");
+        models.add("Spirit");
+        models.add("Stealth");
+        models.add("Stratus");
+        models.add("Viper");
+        models.add("Lancer");
+        models.add("WC");
+        return models;
+    }
+    public static List<String> getDongFengSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("H30 Cross");
+        models.add("MPV");
+        models.add("Oting");
+        models.add("Rich");
+        models.add("S30");
+        return models;
+    }
+    public static List<String> getFiatSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("124");
+        models.add("126");
+        models.add("127");
+        models.add("128");
+        models.add("130");
+        models.add("131");
+        models.add("132");
+        models.add("238");
+        models.add("500");
+        models.add("500L");
+        models.add("600");
+        models.add("900T");
+        models.add("Albea");
+        models.add("Argenta");
+        models.add("Barchetta");
+        models.add("Brava");
+        models.add("Bravo");
+        models.add("Cinquecento");
+        models.add("Coupe");
+        models.add("Croma");
+        models.add("Doblo");
+        models.add("Duna");
+        models.add("Fiorino");
+        models.add("Freemont");
+        models.add("Idea");
+        models.add("Linea");
+        models.add("Marea");
+        models.add("Multipla");
+        models.add("Palio");
+        models.add("Panda");
+        models.add("Punto");
+        models.add("Qubo");
+        models.add("Regata");
+        models.add("Ritmo");
+        models.add("Sedici");
+        models.add("Seicento");
+        models.add("Siena");
+        models.add("Stilo");
+        models.add("Strada");
+        models.add("Tempra");
+        models.add("Tipo");
+        models.add("Ulysse");
+        models.add("UNO");
+        models.add("X 1/9");
+        models.add("Scudo");
+        models.add("500X");
+        models.add("508");
+        return models;
+    }
+    public static List<String> getFordSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Aerostar");
+        models.add("Aspire");
+        models.add("B-MAX");
+        models.add("Bronco");
+        models.add("C-MAX");
+        models.add("Capri");
+        models.add("Consul");
+        models.add("Contour");
+        models.add("Cougar");
+        models.add("Crown Victoria");
+        models.add("Econoline");
+        models.add("EcoSport");
+        models.add("Edge");
+        models.add("Escape");
+        models.add("Escort (North America)");
+        models.add("Escort");
+        models.add("Everest");
+        models.add("Excursion");
+        models.add("Expedition");
+        models.add("Explorer");
+        models.add("F-150");
+        models.add("Fairmont");
+        models.add("Festiva");
+        models.add("Fiesta");
+        models.add("Five Hundred");
+        models.add("Flex");
+        models.add("Focus");
+        models.add("Freestar");
+        models.add("Freestyle");
+        models.add("Fusion (North America)");
+        models.add("Fusion");
+        models.add("Galaxy");
+        models.add("Granada");
+        models.add("GT");
+        models.add("Ixion");
+        models.add("KA");
+        models.add("Kuga");
+        models.add("Laser");
+        models.add("LTD Crown Victoria");
+        models.add("Maverick");
+        models.add("Mondeo");
+        models.add("Mustang");
+        models.add("Orion");
+        models.add("Probe");
+        models.add("Puma");
+        models.add("Ranger (North America)");
+        models.add("Ranger");
+        models.add("S-MAX");
+        models.add("Scorpio");
+        models.add("Sierra");
+        models.add("Taunus");
+        models.add("Taurus");
+        models.add("Taurus X");
+        models.add("Tempo");
+        models.add("Thunderbird");
+        models.add("Tourneo Connect");
+        models.add("Windstar");
+        models.add("Bronco II");
+        models.add("Tourneo Custom");
+        models.add("Tourneo Courier");
+        models.add("Focus (North America)");
+        models.add("Fiesta ST");
+        models.add("Focus RS");
+        models.add("Focus ST");
+        models.add("Mondeo ST");
+        models.add("Explorer Sport Trac");
+        models.add("Spectron");
+        models.add("Telstar");
+        models.add("Galaxie");
+        models.add("Model A");
+        models.add("Model T");
+        models.add("Torino");
+        models.add("Custom");
+        models.add("Fairlane");
+        models.add("Ranchero");
+        return models;
+    }
+    public static List<String> getGeelySeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Beauty Leopard");
+        models.add("CK (Otaka)");
+        models.add("Emgrand EC7");
+        models.add("Emgrand EC8");
+        models.add("Emgrand X7");
+        models.add("FC (Vision)");
+        models.add("Haoqing");
+        models.add("LC (Panda)");
+        models.add("LC (Panda) Cross");
+        models.add("MK Cross");
+        models.add("MK");
+        models.add("MR");
+        models.add("GC6");
+        models.add("SC7");
+        models.add("GC9");
+        return models;
+    }
+    public static List<String> getGMCSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Acadia");
+        models.add("Canyon");
+        models.add("Envoy");
+        models.add("Jimmy");
+        models.add("Safari");
+        models.add("Savana");
+        models.add("Sierra");
+        models.add("Sonoma");
+        models.add("Suburban");
+        models.add("Syclone");
+        models.add("Terrain");
+        models.add("Typhoon");
+        models.add("Vandura");
+        models.add("Yukon");
+        return models;
+    }
+    public static List<String> getGreatWallSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Coolbear");
+        models.add("Cowry (V80)");
+        models.add("Deer");
+        models.add("Florid");
+        models.add("Hover");
+        models.add("Hover M1 (Peri4x4)");
+        models.add("Hover M2");
+        models.add("Hover M4");
+        models.add("Pegasus");
+        models.add("Peri");
+        models.add("Safe");
+        models.add("Sailor");
+        models.add("Sing RUV");
+        models.add("Socool");
+        models.add("Voleex C10 (Phenom)");
+        models.add("Wingle");
+        models.add("Hover H3");
+        models.add("Hover H5");
+        models.add("Hover H6");
+        models.add("Voleex C30");
+        return models;
+    }
+    public static List<String> getHondaSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Accord");
+        models.add("Airwave");
+        models.add("Ascot");
+        models.add("Avancier");
+        models.add("Beat");
+        models.add("Capa");
+        models.add("City");
+        models.add("Civic Ferio");
+        models.add("Civic");
+        models.add("Concerto");
+        models.add("CR-V");
+        models.add("CR-X");
+        models.add("CR-Z");
+        models.add("Crossroad");
+        models.add("Crosstour");
+        models.add("Domani");
+        models.add("Edix");
+        models.add("Element");
+        models.add("Elysion");
+        models.add("FCX Clarity");
+        models.add("Fit Aria");
+        models.add("Fit");
+        models.add("FR-V");
+        models.add("Freed");
+        models.add("HR-V");
+        models.add("Insight");
+        models.add("Inspire");
+        models.add("Integra");
+        models.add("Integra SJ");
+        models.add("Jazz");
+        models.add("Legend");
+        models.add("Life");
+        models.add("Logo");
+        models.add("MDX");
+        models.add("Mobilio");
+        models.add("NSX");
+        models.add("Odyssey (North America)");
+        models.add("Odyssey");
+        models.add("Orthia");
+        models.add("Partner");
+        models.add("Passport");
+        models.add("Pilot");
+        models.add("Prelude");
+        models.add("Quint");
+        models.add("Rafaga");
+        models.add("Ridgeline");
+        models.add("S-MX");
+        models.add("S2000");
+        models.add("Saber");
+        models.add("Shuttle");
+        models.add("Stepwgn");
+        models.add("Stream");
+        models.add("That'S");
+        models.add("Today");
+        models.add("Torneo");
+        models.add("Vamos");
+        models.add("Vigor");
+        models.add("Z");
+        models.add("Zest");
+        models.add("Vezel");
+        models.add("Civic Type R");
+        models.add("Acty");
+        return models;
+    }
+    public static List<String> getHummerSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("H1");
+        models.add("H2");
+        models.add("H3");
+        return models;
+    }
+    public static List<String> getHyundaiSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Accent");
+        models.add("Atos");
+        models.add("Avante");
+        models.add("Centennial");
+        models.add("Coupe");
+        models.add("Dynasty");
+        models.add("Elantra");
+        models.add("Equus");
+        models.add("Excel");
+        models.add("Galloper");
+        models.add("Genesis");
+        models.add("Genesis Coupe");
+        models.add("Getz");
+        models.add("Grandeur");
+        models.add("i10");
+        models.add("i20");
+        models.add("i30");
+        models.add("i40");
+        models.add("ix20");
+        models.add("ix35");
+        models.add("ix55");
+        models.add("Lantra");
+        models.add("Lavita");
+        models.add("Marcia");
+        models.add("Matrix");
+        models.add("Maxcruz");
+        models.add("Pony");
+        models.add("Santa Fe");
+        models.add("Santamo");
+        models.add("Scoupe");
+        models.add("Solaris");
+        models.add("Sonata");
+        models.add("Starex (H-1)");
+        models.add("Stellar");
+        models.add("Terracan");
+        models.add("Tiburon");
+        models.add("Trajet");
+        models.add("Tucson");
+        models.add("Tuscani");
+        models.add("Veloster");
+        models.add("Veracruz");
+        models.add("verna");
+        models.add("XG");
+        models.add("Grace");
+        models.add("Aslan");
+        models.add("Creta");
+        return models;
+    }
+    public static List<String> getInfinitiSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("EX");
+        models.add("FX");
+        models.add("G");
+        models.add("I");
+        models.add("J");
+        models.add("JX");
+        models.add("M");
+        models.add("Q");
+        models.add("Q50");
+        models.add("Q60");
+        models.add("QX");
+        models.add("QX50");
+        models.add("QX60");
+        models.add("QX70");
+        models.add("QX80");
+        models.add("Q70");
+        models.add("Q40");
+        models.add("Q30");
+        models.add("QX30");
+
+        return models;
+    }
+    public static List<String> getIsuzuSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Amigo");
+        models.add("Ascender");
+        models.add("Aska");
+        models.add("Axiom");
+        models.add("Bighorn");
+        models.add("D-Max");
+        models.add("Gemini");
+        models.add("Impulse");
+        models.add("KB");
+        models.add("MU");
+        models.add("MU-7");
+        models.add("Piazza");
+        models.add("Rodeo");
+        models.add("Stylus");
+        models.add("TF (Pickup)");
+        models.add("Trooper");
+        models.add("VehiCross");
+        models.add("Wizard");
+        models.add("MU-X");
+        return models;
+    }
+    public static List<String> getJaguarSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("E-Type");
+        models.add("F-Type");
+        models.add("S-Type");
+        models.add("X-Type");
+        models.add("XF");
+        models.add("XJ");
+        models.add("XJ220");
+        models.add("XJS");
+        models.add("XK");
+        models.add("XE");
+        models.add("XFR");
+        models.add("XKR");
+        models.add("XJR");
+        models.add("F-Pace");
+        return models;
+    }
+    public static List<String> getJeepSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Chrokee");
+        models.add("CJ");
+        models.add("Commander");
+        models.add("Compass");
+        models.add("Grand Cherokee");
+        models.add("Grand Wagoneer");
+        models.add("Liberty (North America)");
+        models.add("Liberty (Patriot)");
+        models.add("Wrangler");
+        models.add("Renegade");
+        models.add("Grand Cherokee SRT8");
+        return models;
+    }
+    public static List<String> getKiaSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Avella");
+        models.add("Cadenza");
+        models.add("Capital");
+        models.add("Carens");
+        models.add("Carnival");
+        models.add("Cee'd");
+        models.add("Cerato");
+        models.add("Clarus");
+        models.add("Concord");
+        models.add("Elan");
+        models.add("Enterprise");
+        models.add("Joice");
+        models.add("Magentis");
+        models.add("Mohave (Borrego)");
+        models.add("Opirus");
+        models.add("Optima");
+        models.add("Picanto");
+        models.add("Potentia");
+        models.add("Pride");
+        models.add("Quoris");
+        models.add("Ray");
+        models.add("Retona");
+        models.add("Rio");
+        models.add("Sedona");
+        models.add("Sephia");
+        models.add("Shuma");
+        models.add("Sorento");
+        models.add("Soul");
+        models.add("Spectra");
+        models.add("Sportage");
+        models.add("Venga");
+        models.add("Visto");
+        models.add("X-Trek");
+        models.add("Cee'd GT");
+        models.add("K3");
+        models.add("K5");
+        return models;
+    }
+    public static List<String> getLamborghiniSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Aventador");
+        models.add("Countach");
+        models.add("Diablo");
+        models.add("Espada");
+        models.add("Gallardo");
+        models.add("Huracan");
+        models.add("Jalpa");
+        models.add("Jarama");
+        models.add("LM001");
+        models.add("LM002");
+        models.add("Murcielago");
+        models.add("Reventon");
+        models.add("Urraco");
+        models.add("Veneno");
+        models.add("Sesto Elemento");
+        return models;
+    }
+    public static List<String> getLandRoverSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Defender");
+        models.add("Discovery");
+        models.add("Freelander");
+        models.add("Range Rover Evoque");
+        models.add("Range Rover");
+        models.add("Range Rover Sport");
+        models.add("Series I");
+        models.add("Series II");
+        models.add("Series III");
+        models.add("Discovery Sport");
+        models.add("Range Rover Velar");
+        return models;
+    }
+    public static List<String> getLexusSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("CT");
+        models.add("ES");
+        models.add("GS");
+        models.add("GX");
+        models.add("HS");
+        models.add("IS");
+        models.add("LFA");
+        models.add("LS");
+        models.add("LX");
+        models.add("RC");
+        models.add("RX");
+        models.add("SC");
+        models.add("NX");
+        models.add("ISF");
+        models.add("RCF");
+        return models;
+    }
+    public static List<String> getLifanSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Breez (520)");
+        models.add("Cebrium (720)");
+        models.add("X60");
+        models.add("Celliya (530)");
+        models.add("Smily");
+        models.add("Solano");
+        models.add("X50");
+        return models;
+    }
+    public static List<String> getLincolnSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("Aviator");
+        models.add("Continental");
+        models.add("LS");
+        models.add("Mark LT");
+        models.add("Mark VII");
+        models.add("Mark VIII");
+        models.add("MKC");
+        models.add("MKS");
+        models.add("MKT");
+        models.add("MKX");
+        models.add("MKZ");
+        models.add("Navigator");
+        models.add("Town Car");
+        return models;
+    }
+    public static List<String> getMazdaSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("1000");
+        models.add("121");
+        models.add("1300");
+        models.add("2");
+        models.add("3");
+        models.add("323");
+        models.add("5");
+        models.add("6");
+        models.add("616");
+        models.add("626");
+        models.add("818");
+        models.add("929");
+        models.add("Atenza");
+        models.add("Axela");
+        models.add("AZ-1");
+        models.add("AZ-Offroad");
+        models.add("AZ-Wagon");
+        models.add("B-series");
+        models.add("Biante");
+        models.add("Bongo Friendee");
+        models.add("Bongo");
+        models.add("BT-50");
+        models.add("Capella");
+        models.add("Carol");
+        models.add("Cronos");
+        models.add("CX-5");
+        models.add("CX-7");
+        models.add("CX-9");
+        models.add("Demio");
+        models.add("Efini MS-6");
+        models.add("Efini MS-8");
+        models.add("Efini MS-9");
+        models.add("Eunos 300");
+        models.add("Eunos 500");
+        models.add("Eunos 800");
+        models.add("Eunos Cosmo");
+        models.add("Familia");
+        models.add("Lantis");
+        models.add("Laputa");
+        models.add("Luce");
+        models.add("Millenia");
+        models.add("MPV");
+        models.add("MX-3");
+        models.add("MX-5");
+        models.add("MX-6");
+        models.add("Navajo");
+        models.add("Persona");
+        models.add("Premacy");
+        models.add("Proceed Levante");
+        models.add("Proceed Marvie");
+        models.add("Protege");
+        models.add("Revue");
+        models.add("Roadster");
+        models.add("RX-7");
+        models.add("");
+        models.add("RX-8");
+        models.add("Scrum");
+        models.add("Sentia");
+        models.add("Spiano");
+        models.add("Tribute");
+        models.add("Versia");
+        models.add("Xedos 6");
+        models.add("Xedos 9");
+        models.add("3 MPS");
+        models.add("6 MPS");
+        models.add("CX-3");
+        models.add("Cosmo");
+        return models;
+    }
+    public static List<String> getMercedesBenzSeries() {
+        List<String> models = new ArrayList<>();
+        models.add("190 (W201)");
+        models.add("А-класс");
+        models.add("В-класс");
+        models.add("С-класс");
+        models.add("Citan");
+        models.add("CL-класс");
+        models.add("CLA-класс");
+        models.add("CLC- класс");
+        models.add("E-класс");
+        models.add("G-класс");
+        models.add("GL-класс");
+        models.add("GLA-класс");
+        models.add("GLK-класс");
+        models.add("M-класс");
+        models.add("S-класс");
+        models.add("SL-класс");
+        models.add("SLK-класс");
+        models.add("SLR McLaren");
+        models.add("Vaneo");
+        models.add("Viano");
+        models.add("W114");
+        models.add("W115");
+        models.add("W123");
+        models.add("W124");
+        models.add("Vito");
+        models.add("A-класс AMG");
+        models.add("C-класс AMG");
+        models.add("CL-класс AMG");
+        models.add("CLA-класс AMG");
+        models.add("CLK-класс AMG");
+        models.add("CLS-класс AMG");
+        models.add("E-класс AMG");
+        models.add("G-класс AMG");
+        models.add("G-класс AMG 6x6");
+        models.add("GLA-класс AMG");
+        models.add("M-класс AMG");
+        models.add("Maybach S-класс");
+        models.add("R-класс AMG");
+        models.add("S-класс AMG");
+        models.add("SL-класс AMG");
+        models.add("SLK-класс AMG");
+        models.add("GL-класс AMG");
+        models.add("V-класс");
+        models.add("AMG GLE");
+        models.add("AMG GLE Coupe");
+        models.add("GLE");
+        models.add("GLE Coupe");
+        models.add("GLC-класс");
+        models.add("190 SL");
+        models.add("W100");
+        models.add("W110");
+        models.add("W136");
+        models.add("W189");
+        models.add("W121");
+        models.add("W120");
+        models.add("GLS-класс");
+        models.add("GLS-класс AMG");
+        models.add("W108");
+        return models;
+    }
+    public static List<String> getMiniCarSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Cabrio");
+        models.add("Clubman");
+        models.add("Clubvan");
+        models.add("Countryman");
+        models.add("Coupe");
+        models.add("Hatch");
+        models.add("Paceman");
+        models.add("Roadster");
+        return models;
+    }
+    public static List<String> getMitsubishiSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("3000GT");
+        models.add("Airtrek");
+        models.add("Aspire");
+        models.add("ASX");
+        models.add("Carisma");
+        models.add("Celeste");
+        models.add("Challenger");
+        models.add("Chariot");
+        models.add("Colt");
+        models.add("Cordia");
+        models.add("Debonair");
+        models.add("Delica");
+        models.add("Diamante");
+        models.add("Dingo");
+        models.add("Dion");
+        models.add("Eclipse");
+        models.add("eK");
+        models.add("Emeraude");
+        models.add("Endeavor");
+        models.add("Eterna");
+        models.add("FTO");
+        models.add("Galant");
+        models.add("Grandis");
+        models.add("GTO");
+        models.add("i");
+        models.add("i-MiEV");
+        models.add("L200");
+        models.add("Lancer Cargo");
+        models.add("Lancer Evolution");
+        models.add("Lancer Ralliart");
+        models.add("Lancer");
+        models.add("Legnum");
+        models.add("Libero");
+        models.add("Minica");
+        models.add("Mirage");
+        models.add("Montero");
+        models.add("Montero Sport");
+        models.add("Outlander");
+        models.add("Pajero");
+        models.add("Pajero iO");
+        models.add("Pajero Junior");
+        models.add("Pajero Mini");
+        models.add("Pajero Pinin");
+        models.add("Pajero Sport");
+        models.add("Pistachio");
+        models.add("Proudia");
+        models.add("Raider");
+        models.add("RVR");
+        models.add("Sapporo");
+        models.add("Sigma");
+        models.add("Space Star");
+        models.add("Space Wagon");
+        models.add("Stario");
+        models.add("Toppo");
+        models.add("Town Box");
+        models.add("Tredia");
+        models.add("Minicab");
+        models.add("Attrage");
+        models.add("Jeep J");
+        return models;
+    }
+    public static List<String> getNissanSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("100NX");
+        models.add("180SX");
+        models.add("200SX");
+        models.add("240SX");
+        models.add("280ZX");
+        models.add("300ZX");
+        models.add("350Z");
+        models.add("370Z");
+        models.add("AD");
+        models.add("Almera Classic");
+        models.add("Almera");
+        models.add("Almera Tino");
+        models.add("Altima");
+        models.add("Armada");
+        models.add("Avenir");
+        models.add("Bassara");
+        models.add("BE-1");
+        models.add("Bluebird Sylphy");
+        models.add("Bluebird");
+        models.add("Cedric");
+        models.add("Cefiro");
+        models.add("Cherry");
+        models.add("Cima");
+        models.add("Clipper");
+        models.add("Crew");
+        models.add("Cube");
+        models.add("Datsun");
+        models.add("Dualis");
+        models.add("Elgrand");
+        models.add("Expert");
+        models.add("Fairlady Z");
+        models.add("Figaro");
+        models.add("Fuga");
+        models.add("Gloria");
+        models.add("GT-R");
+        models.add("Juke");
+        models.add("Lafesta");
+        models.add("Langley");
+        models.add("Largo");
+        models.add("Laurel");
+        models.add("Leaf");
+        models.add("Leopard");
+        models.add("Liberty");
+        models.add("Lucino");
+        models.add("March");
+        models.add("Maxima");
+        models.add("Micra");
+        models.add("MIstral");
+        models.add("Moco");
+        models.add("Murano");
+        models.add("Navara (Frontier)");
+        models.add("Note");
+        models.add("NP 300");
+        models.add("NV 200");
+        models.add("NX Coupe");
+        models.add("Otti (Dayz)");
+        models.add("Pao");
+        models.add("Pathfinder");
+        models.add("Patrol");
+        models.add("Pino");
+        models.add("Pixo");
+        models.add("Prairie");
+        models.add("Presage");
+        models.add("Presea");
+        models.add("President");
+        models.add("Primera");
+        models.add("Pulsar");
+        models.add("Qashqai");
+        models.add("Quest");
+        models.add("R'nessa");
+        models.add("Rasheen");
+        models.add("Rogue");
+        models.add("Roox");
+        models.add("Safari");
+        models.add("Sentra");
+        models.add("Serena");
+        models.add("Silvia");
+        models.add("Skyline");
+        models.add("Stagea");
+        models.add("Stanza");
+        models.add("Sunny");
+        models.add("Teana");
+        models.add("Terrano");
+        models.add("Terrano Regulus");
+        models.add("Tiida");
+        models.add("Tino");
+        models.add("Titan");
+        models.add("Vanette");
+        models.add("Versa");
+        models.add("Wingroad");
+        models.add("X-Terra");
+        models.add("X-Trail");
+        models.add("Primastar");
+        models.add("Caravan");
+        models.add("NV350 Caravan");
+        models.add("Urvan");
+        models.add("Juke Nismo");
+        models.add("Qashqai+2");
+        return models;
+    }
+    public static List<String> getOpelSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Adam");
+        models.add("Admiral");
+        models.add("Agila");
+        models.add("Ampera");
+        models.add("Antara");
+        models.add("Ascona");
+        models.add("Astra");
+        models.add("Calibra");
+        models.add("Campo");
+        models.add("Cascada");
+        models.add("Combo");
+        models.add("Commodore");
+        models.add("Corsa");
+        models.add("Diplomat");
+        models.add("Frontera");
+        models.add("GT");
+        models.add("Insignia");
+        models.add("Kadett");
+        models.add("Manta");
+        models.add("Meriva");
+        models.add("Mokka");
+        models.add("Monterey");
+        models.add("Monza");
+        models.add("Omega");
+        models.add("Rekord");
+        models.add("Senator");
+        models.add("Signum");
+        models.add("Sintra");
+        models.add("Speedster");
+        models.add("Tigra");
+        models.add("Vectra");
+        models.add("Vita");
+        models.add("Zafira");
+        models.add("Vivaro");
+        models.add("Astra OPC");
+        models.add("Corsa OPC");
+        models.add("Insignia OPC");
+        models.add("Meriva OPC");
+        models.add("Vectra OPC");
+        models.add("Zafira OPC");
+        models.add("Karl");
+        models.add("Olympia");
+        return models;
+    }
+    public static List<String> getPeugeotSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("1007");
+        models.add("104");
+        models.add("106");
+        models.add("107");
+        models.add("2008");
+        models.add("204");
+        models.add("205");
+        models.add("206");
+        models.add("207");
+        models.add("208");
+        models.add("3008");
+        models.add("301");
+        models.add("304");
+        models.add("305");
+        models.add("306");
+        models.add("307");
+        models.add("308");
+        models.add("309");
+        models.add("4007");
+        models.add("4008");
+        models.add("405");
+        models.add("406");
+        models.add("407");
+        models.add("408");
+        models.add("5008");
+        models.add("504");
+        models.add("505");
+        models.add("508");
+        models.add("604");
+        models.add("605");
+        models.add("607");
+        models.add("806");
+        models.add("807");
+        models.add("Partner");
+        models.add("RCZ");
+        models.add("108");
+        models.add("Expert");
+        models.add("Bipper");
+        models.add("205 GTi");
+        models.add("208 GTi");
+        models.add("iOn");
+        models.add("308 GTi");
+        return models;
+    }
+    public static List<String> getPorscheSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("911");
+        models.add("914");
+        models.add("924");
+        models.add("928");
+        models.add("944");
+        models.add("959");
+        models.add("968");
+        models.add("Boxter");
+        models.add("Carrera GT");
+        models.add("Cayenne");
+        models.add("Cayman");
+        models.add("Macan");
+        models.add("Panamera");
+        models.add("911 GT2");
+        models.add("911 GT3");
+        models.add("918 Spyder");
+        models.add("Cayman GT4");
+        models.add("356");
+        return models;
+    }
+    public static List<String> getRavonSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Gentra");
+        models.add("Matiz");
+        models.add("Nexia R3");
+        models.add("R2");
+        models.add("R4");
+        return models;
+    }
+    public static List<String> getRenaultSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("11");
+        models.add("12");
+        models.add("14");
+        models.add("15");
+        models.add("16");
+        models.add("17");
+        models.add("18");
+        models.add("19");
+        models.add("20");
+        models.add("21");
+        models.add("25");
+        models.add("30");
+        models.add("4");
+        models.add("5");
+        models.add("6");
+        models.add("9");
+        models.add("Avantime");
+        models.add("Capture");
+        models.add("Clio");
+        models.add("Duster");
+        models.add("Espace");
+        models.add("Estafette");
+        models.add("Fluence");
+        models.add("Fuego");
+        models.add("Kangoo");
+        models.add("Koleos");
+        models.add("Laguna");
+        models.add("Latitude");
+        models.add("Logan");
+        models.add("Megane");
+        models.add("Modus");
+        models.add("Rodeo");
+        models.add("Safrane");
+        models.add("Sandero");
+        models.add("Scenic");
+        models.add("Sport Spider");
+        models.add("Symbol");
+        models.add("Twingo");
+        models.add("Twizy");
+        models.add("Vel Satis");
+        models.add("Wind");
+        models.add("ZOE");
+        models.add("Trafic");
+        models.add("Dokker");
+        models.add("Lodgy");
+        models.add("Clio RS");
+        models.add("Clio V6");
+        models.add("Megane RS");
+        models.add("Kadjar");
+        models.add("Talisman");
+        models.add("Sandero RS");
+        models.add("KWID");
+        models.add("Arkana");
+        return models;
+    }
+    public static List<String> getRoverSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("100");
+        models.add("200");
+        models.add("25");
+        models.add("400");
+        models.add("45");
+        models.add("600");
+        models.add("75");
+        models.add("800");
+        models.add("Metro");
+        models.add("Mini");
+        models.add("P6");
+        models.add("SD1");
+        models.add("Streetwise");
+        return models;
+    }
+    public static List<String> getSaabSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("9-2X");
+        models.add("9-3");
+        models.add("9-4X");
+        models.add("9-5");
+        models.add("9-7X");
+        models.add("90");
+        models.add("900");
+        models.add("9000");
+        models.add("95");
+        models.add("96");
+        models.add("99");
+        return models;
+    }
+    public static List<String> getSaturnSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Astra");
+        models.add("Aura");
+        models.add("ION");
+        models.add("LS");
+        models.add("LW");
+        models.add("Outlook");
+        models.add("Relay");
+        models.add("SC");
+        models.add("Sky");
+        models.add("SL");
+        models.add("SW");
+        models.add("VUE");
+        return models;
+    }
+    public static List<String> getScionSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("FR-S");
+        models.add("iQ");
+        models.add("tC");
+        models.add("xA");
+        models.add("xB");
+        models.add("xD");
+        models.add("iM");
+        models.add("iA");
+        return models;
+    }
+    public static List<String> getSEATSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("133");
+        models.add("Alhambra");
+        models.add("Altea");
+        models.add("Arosa");
+        models.add("Cordoba");
+        models.add("Exeo");
+        models.add("Fura");
+        models.add("Ibiza");
+        models.add("Leon");
+        models.add("Malaga");
+        models.add("Marbella");
+        models.add("Ronda");
+        models.add("Toledo");
+        models.add("Ibiza Cupra");
+        models.add("Leon Cupra");
+        models.add("Mii");
+        return models;
+    }
+    public static List<String> getSkodaSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("100 Series");
+        models.add("Citigo");
+        models.add("Fabia");
+        models.add("Favorit");
+        models.add("Felicia");
+        models.add("Octavia");
+        models.add("Rapid");
+        models.add("Roomster");
+        models.add("Superb");
+        models.add("Yeti");
+        models.add("Fabia RS");
+        models.add("Ocatvia RS");
+        models.add("Kodiaq");
+        return models;
+    }
+    public static List<String> getSsangYongSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Actyon");
+        models.add("Actyon Sports");
+        models.add("Chairman");
+        models.add("Kallista");
+        models.add("Korando Family");
+        models.add("Korando");
+        models.add("Kyron");
+        models.add("Musso");
+        models.add("Rexton");
+        models.add("Rodius");
+        models.add("Stavic");
+        models.add("Korando Sports");
+        models.add("Nomad");
+        models.add("Tivoli");
+        return models;
+    }
+    public static List<String> getSubaruSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Alcyone");
+        models.add("Baja");
+        models.add("BRZ");
+        models.add("Dex");
+        models.add("Domingo");
+        models.add("Exiga");
+        models.add("Forester");
+        models.add("Impreza");
+        models.add("Justy");
+        models.add("Legacy");
+        models.add("Leone");
+        models.add("Libero");
+        models.add("Lucra");
+        models.add("Outback");
+        models.add("Pleo");
+        models.add("R1");
+        models.add("R2");
+        models.add("Smbar");
+        models.add("Stella");
+        models.add("SVX");
+        models.add("Traviq");
+        models.add("Trezia");
+        models.add("Tribeca");
+        models.add("Vivio");
+        models.add("XT");
+        models.add("XV");
+        models.add("WRX");
+        models.add("Impreza WRX");
+        models.add("Impreza WRX STi");
+        models.add("WRX STi");
+        models.add("Levorg");
+        return models;
+    }
+    public static List<String> getSuzukiSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Aerio");
+        models.add("Alto");
+        models.add("Baleno");
+        models.add("Cappuccino");
+        models.add("Cervo");
+        models.add("Ertiga");
+        models.add("Escudo");
+        models.add("Every");
+        models.add("Forenza");
+        models.add("Grand Vitara");
+        models.add("Ignis");
+        models.add("Jimny");
+        models.add("Kei");
+        models.add("Kizashi");
+        models.add("Landy");
+        models.add("Liana");
+        models.add("MR Wagon");
+        models.add("Palette");
+        models.add("Reno");
+        models.add("Solio");
+        models.add("Spacia");
+        models.add("Splash");
+        models.add("Swift");
+        models.add("SX4");
+        models.add("Verona");
+        models.add("Wagon R");
+        models.add("Wagon R+");
+        models.add("X-90");
+        models.add("XL7");
+        models.add("Celerio");
+        models.add("Vitara");
+        models.add("Samurai");
+        return models;
+    }
+    public static List<String> getTofasSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("Dogan");
+        models.add("Kartal");
+        models.add("Murat 131");
+        models.add("Serce");
+        return models;
+    }
+    public static List<String> getToyotaSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("4Runner");
+        models.add("Allex");
+        models.add("Allion");
+        models.add("Alphard");
+        models.add("Altezza");
+        models.add("Aristo");
+        models.add("Aurion");
+        models.add("Auris");
+        models.add("Avalon");
+        models.add("Avensis");
+        models.add("Avensis Verso");
+        models.add("Aygo");
+        models.add("bB");
+        models.add("Belta");
+        models.add("Blade");
+        models.add("Blizzard");
+        models.add("Brevis");
+        models.add("Caldina");
+        models.add("Cami");
+        models.add("Camry");
+        models.add("Camry(Japan)");
+        models.add("Camry Solara");
+        models.add("Carina ED");
+        models.add("Carina");
+        models.add("Cavalier");
+        models.add("Celica");
+        models.add("Celsior");
+        models.add("Century");
+        models.add("Chaser");
+        models.add("Corolla");
+        models.add("Corolla Rumion");
+        models.add("Corolla Spacio");
+        models.add("Corolla Verso");
+        models.add("Corona");
+        models.add("Corsa");
+        models.add("Cressida");
+        models.add("Cresta");
+        models.add("Crown Majesta");
+        models.add("Crown");
+        models.add("Curren");
+        models.add("Cynos");
+        models.add("Duet");
+        models.add("Echo");
+        models.add("Estima");
+        models.add("FJ Cruiser");
+        models.add("Fortuner");
+        models.add("FunCargo");
+        models.add("Gaia");
+        models.add("Granvia");
+        models.add("Harrier");
+        models.add("HiAce");
+        models.add("Highlander");
+        models.add("Hilux Surf");
+        models.add("Hilux");
+        models.add("Innova");
+        models.add("Ipsum");
+        models.add("iQ");
+        models.add("ISis");
+        models.add("Ist");
+        models.add("Kluger");
+        models.add("Land Cruiser");
+        models.add("Land Cruiser Prado");
+        models.add("LiteAce");
+        models.add("Mark II");
+        models.add("Mark X");
+        models.add("Mark X ZiO");
+        models.add("MasterAce Surf");
+        models.add("Matrix");
+        models.add("Mega Cruiser");
+        models.add("MR2");
+        models.add("Nadia");
+        models.add("Noah");
+        models.add("Opa");
+        models.add("Origin");
+        models.add("Paseo");
+        models.add("Passo");
+        models.add("Passo Sette");
+        models.add("Picnic");
+        models.add("Platz");
+        models.add("Porte");
+        models.add("Premio");
+        models.add("Previa");
+        models.add("Prius C");
+        models.add("Prius v(+)");
+        models.add("Prius");
+        models.add("Probox");
+        models.add("Progres");
+        models.add("Pronard");
+        models.add("Ractis");
+        models.add("Raum");
+        models.add("RAV 4");
+        models.add("Regius");
+        models.add("RegiusAce");
+        models.add("Rush");
+        models.add("Sai");
+        models.add("Scepter");
+        models.add("Sequoia");
+        models.add("Sera");
+        models.add("Sienna");
+        models.add("Sienta");
+        models.add("Soarer");
+        models.add("Soluna");
+        models.add("Sparky");
+        models.add("Sprinter Carib");
+        models.add("Sprinter Marino");
+        models.add("Sprinter Trueno");
+        models.add("Sprinter");
+        models.add("Starlet");
+        models.add("Succeed");
+        models.add("Supra");
+        models.add("Tacoma");
+        models.add("Tercel");
+        models.add("TownAce");
+        models.add("Tundra");
+        models.add("Urban Cruiser");
+        models.add("Vanguard");
+        models.add("Vellfire");
+        models.add("Venza");
+        models.add("Verossa");
+        models.add("Verso");
+        models.add("Verso-S");
+        models.add("Vios");
+        models.add("Vista");
+        models.add("Vitz");
+        models.add("Voltz");
+        models.add("Voxy");
+        models.add("Will Sypha");
+        models.add("Will");
+        models.add("Windom");
+        models.add("Wish");
+        models.add("Yaris");
+        models.add("Yaris Verso");
+        models.add("ProAce");
+        models.add("GT86");
+        models.add("Mirai");
+        models.add("2000GT");
+        models.add("C-HR");
+        return models;
+    }
+    public static List<String> getVolkswagenSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("181");
+        models.add("Beetle");
+        models.add("Bora");
+        models.add("Caddy");
+        models.add("Corrado");
+        models.add("Derby");
+        models.add("Eos");
+        models.add("Fox");
+        models.add("Golf Country");
+        models.add("Golf");
+        models.add("Golf Plus");
+        models.add("Golf Sportsvan");
+        models.add("Iltis");
+        models.add("Jetta");
+        models.add("Lupo");
+        models.add("Multivan");
+        models.add("Passat (North America)");
+        models.add("Passat");
+        models.add("Passat CC");
+        models.add("Phaeton");
+        models.add("Pointer");
+        models.add("Polo");
+        models.add("Routan");
+        models.add("Santana");
+        models.add("Scirocco");
+        models.add("Sharan");
+        models.add("Taro");
+        models.add("Tiguan");
+        models.add("Touareg");
+        models.add("Touran");
+        models.add("Type 4");
+        models.add("up!");
+        models.add("Vento");
+        models.add("XL1");
+        models.add("Amarok");
+        models.add("California");
+        models.add("Caravelle");
+        models.add("Transporter");
+        models.add("Golf GTI");
+        models.add("Golf R");
+        models.add("Lupo GTI");
+        models.add("Polo GTI");
+        models.add("Polo R WRC");
+        models.add("Scirocco R");
+        models.add("Karmann-Ghia");
+        models.add("Type 1");
+        models.add("Type 2");
+        return models;
+    }
+    public static List<String> getVolvoSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("140 Series");
+        models.add("164");
+        models.add("240 Series");
+        models.add("260 Series");
+        models.add("300 Series");
+        models.add("440");
+        models.add("460");
+        models.add("480");
+        models.add("66");
+        models.add("740");
+        models.add("760");
+        models.add("780");
+        models.add("850");
+        models.add("940");
+        models.add("960");
+        models.add("C30");
+        models.add("C70");
+        models.add("Laplander");
+        models.add("S40");
+        models.add("S60");
+        models.add("S70");
+        models.add("S80");
+        models.add("S90");
+        models.add("V40");
+        models.add("V50");
+        models.add("V60");
+        models.add("V70");
+        models.add("V90");
+        models.add("XC60");
+        models.add("XC70");
+        models.add("XC90");
+        models.add("V40 Cross Country");
+        models.add("S60 Cross Country");
+        models.add("V60 Cross Country");
+        models.add("120 Series");
+        return models;
+    }
+    public static List<String> getLadaSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("1111 Oka");
+        models.add("2101");
+        models.add("2102");
+        models.add("2103");
+        models.add("2104");
+        models.add("2105");
+        models.add("2106");
+        models.add("2107");
+        models.add("2108");
+        models.add("2109");
+        models.add("21099");
+        models.add("2110");
+        models.add("2111");
+        models.add("2112");
+        models.add("2113");
+        models.add("2114");
+        models.add("2115");
+        models.add("2120 Надежда");
+        models.add("2121 (4х4) Нива");
+        models.add("2131 (4х4) Нива");
+        models.add("2123");
+        models.add("2129");
+        models.add("2328");
+        models.add("2329");
+        models.add("Granta");
+        models.add("Kalina");
+        models.add("Largus");
+        models.add("Priora");
+        models.add("Revolution");
+        models.add("Vesta");
+        models.add("XRAY");
+        models.add("El Lada");
+        return models;
+    }
+    public static List<String> getGazSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("14 Чайка");
+        models.add("13 Чайка");
+        models.add("21 Волга");
+        models.add("22 Волга");
+        models.add("2308 Атаман");
+        models.add("2330 Тигр");
+        models.add("24 Волга");
+        models.add("3102 Волга");
+        models.add("31029 Волга");
+        models.add("3103 Волга");
+        models.add("3105 Волга");
+        models.add("3110 Волга");
+        models.add("31105 Волга");
+        models.add("3111 Волга");
+        models.add("69");
+        models.add("Volga Siber");
+        models.add("М20 Победа");
+        models.add("М1");
+        models.add("М-72");
+        models.add("12 ЗИМ");
+        models.add("67");
+        return models;
+    }
+    public static List<String> getZazSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("1102 Таврия");
+        models.add("1103 Славута");
+        models.add("1105 Дана");
+        models.add("965");
+        models.add("966");
+        models.add("968");
+        models.add("Chance");
+        models.add("Forza");
+        models.add("Sens");
+        models.add("Vida");
+        return models;
+    }
+    public static List<String> getIzhSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("2125 Комби");
+        models.add("2126 Ода");
+        models.add("21261 Фабула");
+        models.add("2717");
+        models.add("Москвич-412");
+        return models;
+    }
+    public static List<String> getLuazSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("1302 Волынь");
+        models.add("967");
+        models.add("969");
+        return models;
+    }
+    public static List<String> getMoscvichSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("2136");
+        models.add("2137");
+        models.add("2138");
+        models.add("2140");
+        models.add("2141");
+        models.add("400");
+        models.add("401");
+        models.add("402");
+        models.add("403");
+        models.add("407");
+        models.add("408");
+        models.add("410");
+        models.add("411");
+        models.add("412");
+        models.add("423");
+        models.add("426");
+        models.add("427");
+        models.add("Дуэт");
+        models.add("Иван Калита");
+        models.add("Князь Владимир");
+        models.add("Святогор");
+        models.add("Юрий Долгорукий");
+        return models;
+    }
+    public static List<String> getUazSeries(){
+        List<String> models = new ArrayList<>();
+        models.add("3151");
+        models.add("3153");
+        models.add("3160");
+        models.add("3162 Simbir");
+        models.add("469");
+        models.add("Hunter");
+        models.add("Patriot");
+        models.add("Pickup");
+        models.add("3159");
+        return models;
+    }
+
+    public static ArrayList<CarModels> getCarModel() {
+        ArrayList<CarModels> carModels = new ArrayList<>();
+        carModels.add(new CarModels(R.drawable.acura, "Acura"));
+        carModels.add(new CarModels(R.drawable.alfaromeo, "Alfa Romeo"));
+        carModels.add(new CarModels(R.drawable.alpina, "Alpina"));
+        carModels.add(new CarModels(R.drawable.audi, "Audi"));
+        carModels.add(new CarModels(R.drawable.bentley, "Bentley"));
+        carModels.add(new CarModels(R.drawable.bmw, "BMW"));
+        carModels.add(new CarModels(R.drawable.byd, "BYD"));
+        carModels.add(new CarModels(R.drawable.cadillac, "Cadillac"));
+        carModels.add(new CarModels(R.drawable.cherry, "Chery"));
+        carModels.add(new CarModels(R.drawable.chevr, "Chevrolet"));            //
+        carModels.add(new CarModels(R.drawable.chrysler, "Chrysler"));          //
+        carModels.add(new CarModels(R.drawable.citraon, "Citroen"));            //
+        carModels.add(new CarModels(R.drawable.daewoo, "Daewoo"));              //
+        carModels.add(new CarModels(R.drawable.daihatsu, "Daihatsu"));          //
+        carModels.add(new CarModels(R.drawable.dodge, "Dodge"));                //
+        carModels.add(new CarModels(R.drawable.dongfeng, "DongFeng"));          //
+        carModels.add(new CarModels(R.drawable.fiat, "Fiat"));                  //
+        carModels.add(new CarModels(R.drawable.ford, "Ford"));                  //
+        carModels.add(new CarModels(R.drawable.geekly, "Geely"));               //
+        carModels.add(new CarModels(R.drawable.gmc, "GMC"));                    //
+        carModels.add(new CarModels(R.drawable.greatwall, "Great Wall"));       //
+        carModels.add(new CarModels(R.drawable.honda, "Honda"));                //
+        carModels.add(new CarModels(R.drawable.hummer, "Hummer"));              //
+        carModels.add(new CarModels(R.drawable.hyundai, "Hyundai"));            //
+        carModels.add(new CarModels(R.drawable.infinity, "Infiniti"));          //
+        carModels.add(new CarModels(R.drawable.isuzu, "Isuzu"));                //
+        carModels.add(new CarModels(R.drawable.jaguar, "Jaguar"));              //
+        carModels.add(new CarModels(R.drawable.jeep, "Jeep"));                  //
+        carModels.add(new CarModels(R.drawable.kia, "Kia"));                    //
+        carModels.add(new CarModels(R.drawable.lamba, "Lamborghini"));          //
+        carModels.add(new CarModels(R.drawable.landrover, "Land Rover"));       //
+        carModels.add(new CarModels(R.drawable.lexus, "Lexus"));                //
+        carModels.add(new CarModels(R.drawable.lifan, "Lifan"));                //
+        carModels.add(new CarModels(R.drawable.lincoln, "Lincoln"));            //
+        carModels.add(new CarModels(R.drawable.mazda, "Mazda"));                //
+        carModels.add(new CarModels(R.drawable.merc, "Mercedes-Benz"));         //
+        carModels.add(new CarModels(R.drawable.mini, "MINI"));                  //
+        carModels.add(new CarModels(R.drawable.mitsu, "Mitsubishi"));           //
+        carModels.add(new CarModels(R.drawable.nissan, "Nissan"));              //
+        carModels.add(new CarModels(R.drawable.ople, "Opel"));                  //
+        carModels.add(new CarModels(R.drawable.peugeot, "Peugeot"));            //
+        carModels.add(new CarModels(R.drawable.porsche, "Porsche"));            //
+        carModels.add(new CarModels(R.drawable.ravon, "Ravon"));                //
+        carModels.add(new CarModels(R.drawable.renault, "Renault"));            //
+        carModels.add(new CarModels(R.drawable.rover, "Rover"));                //
+        carModels.add(new CarModels(R.drawable.saab, "Saab"));                  //
+        carModels.add(new CarModels(R.drawable.saturn, "Saturn"));              //
+        carModels.add(new CarModels(R.drawable.scion, "Scion"));                //
+        carModels.add(new CarModels(R.drawable.seat, "SEAT"));                  //
+        carModels.add(new CarModels(R.drawable.scoda, "Skoda"));                //
+        carModels.add(new CarModels(R.drawable.ssangyoung, "SsangYong"));       //
+        carModels.add(new CarModels(R.drawable.subaru, "Subaru"));              //
+        carModels.add(new CarModels(R.drawable.suzuki, "Suzuki"));              //
+        carModels.add(new CarModels(R.drawable.tofas, "Tofas"));                //
+        carModels.add(new CarModels(R.drawable.toyota, "Toyota"));              //
+        carModels.add(new CarModels(R.drawable.volks, "Volkswagen"));           //
+        carModels.add(new CarModels(R.drawable.volvo, "Volvo"));                //
+        carModels.add(new CarModels(R.drawable.lada, "ВАЗ (Lada)"));            //
+        carModels.add(new CarModels(R.drawable.gaz, "ГАЗ"));                    //
+        carModels.add(new CarModels(R.drawable.zaz, "ЗАЗ"));                    //
+        carModels.add(new CarModels(R.drawable.izh, "ИЖ"));                     //
+        carModels.add(new CarModels(R.drawable.luaz, "ЛуАЗ"));                  //
+        carModels.add(new CarModels(R.drawable.izh, "Москвич"));                //
+        carModels.add(new CarModels(R.drawable.uaz, "УАЗ"));
+        carModels.add(new CarModels(R.drawable.transport, "Другое"));
+        return carModels;
+    }
+
+    public static List<String> getCarYear() {
+        List<String> carYear = new ArrayList<>();
+        carYear.add("2020");
+        carYear.add("2019");
+        carYear.add("2018");
+        carYear.add("2017");
+        carYear.add("2016");
+        carYear.add("2015");
+        carYear.add("2014");
+        carYear.add("2013");
+        carYear.add("2012");
+        carYear.add("2011");
+        carYear.add("2010");
+        carYear.add("2009");
+        carYear.add("2008");
+        carYear.add("2007");
+        carYear.add("2006");
+        carYear.add("2005");
+        carYear.add("2004");
+        carYear.add("2003");
+        carYear.add("2002");
+        carYear.add("2001");
+        carYear.add("2000");
+        carYear.add("1999");
+        carYear.add("1998");
+        carYear.add("1997");
+        carYear.add("1996");
+        carYear.add("1995");
+        carYear.add("1994");
+        carYear.add("1993");
+        carYear.add("1992");
+        carYear.add("1991");
+        carYear.add("1990");
+        carYear.add("1989");
+        carYear.add("1988");
+        carYear.add("1987");
+        carYear.add("1986");
+        carYear.add("1985");
+        carYear.add("1984");
+        carYear.add("1983");
+        carYear.add("1982");
+        carYear.add("1981");
+        carYear.add("1980");
+        carYear.add("1979");
+        carYear.add("1978");
+        carYear.add("1977");
+        carYear.add("1976");
+        carYear.add("1975");
+        carYear.add("1974");
+        carYear.add("1973");
+        carYear.add("1972");
+        carYear.add("1971");
+        carYear.add("1970");
+        carYear.add("1969");
+        carYear.add("1968");
+        carYear.add("1967");
+        carYear.add("1966");
+        carYear.add("1965");
+        carYear.add("1964");
+        carYear.add("1963");
+        carYear.add("1962");
+        carYear.add("1961");
+        carYear.add("1960");
+        return carYear;
+    }
+    public static List<String> getCarBodyType() {
+        List<String> bodyType = new ArrayList<>();
+        bodyType.add("Седан");
+        bodyType.add("Универсал");
+        bodyType.add("Внедорожник");
+        bodyType.add("Хэтчбэк");
+        bodyType.add("Минивэн");
+        bodyType.add("Лимузин");
+        bodyType.add("Пикап");
+        bodyType.add("Кабриолет");
+        bodyType.add("Купе");
+        return bodyType;
+    }
+    public static List<String> getFuelType() {
+        List<String> fuel = new ArrayList<>();
+        fuel.add("Бензин");
+        fuel.add("Дизель");
+        fuel.add("Газ/бензин");
+        fuel.add("Газ");
+        fuel.add("Электромобиль");
+        return fuel;
+    }
+    public static List<String> getDriveUnit() {
+        List<String> driveUnit = new ArrayList<>();
+        driveUnit.add("Передний");
+        driveUnit.add("Задний");
+        driveUnit.add("Полный");
+        return driveUnit;
+    }
+    public static List<String> getCarColor() {
+        List<String> carColor = new ArrayList<>();
+        carColor.add("Серебристый");
+        carColor.add("Серый");
+        carColor.add("Мокрый асфальт");
+        carColor.add("Черный");
+        carColor.add("Белый");
+        carColor.add("Бежевый");
+        carColor.add("Бирюзовый");
+        carColor.add("Бордовый");
+        carColor.add("Бронза");
+        carColor.add("Вишня");
+        carColor.add("Голубой");
+        carColor.add("Желтый");
+        carColor.add("Зеленый");
+        carColor.add("Золотистый");
+        carColor.add("Коричневый");
+        carColor.add("Красный");
+        carColor.add("Оранжевый");
+        carColor.add("Розовый");
+        carColor.add("Синий");
+        carColor.add("Сиреневый");
+        carColor.add("Фиолетовый");
+        carColor.add("Хамелеон");
+        carColor.add("Баклажан");
+        return carColor;
+    }
+    public static List<String> getCppType(){
+        List<String> cppType = new ArrayList<>();
+        cppType.add("Механическая");
+        cppType.add("Автоматическая");
+        cppType.add("Вариатор");
+        cppType.add("Робот");
+        return cppType;
+    }
+    public static List<String> getSteeringWheel(){
+        List<String> type = new ArrayList<>();
+        type.add("Слева");
+        type.add("Справа");
+        return type;
+    }
+    public static List<String> getCondition(){
+        List<String> condition = new ArrayList<>();
+        condition.add("Новое");
+        condition.add("Идеальное");
+        condition.add("Хорошее");
+        condition.add("Аварийное");
+        return condition;
+    }
+    public static List<String> getEngineCapacity(){
+        List<String> capasity = new ArrayList<>();
+        capasity.add("0.1");
+        capasity.add("0.2");
+        capasity.add("0.3");
+        capasity.add("0.4");
+        capasity.add("0.5");
+        capasity.add("0.6");
+        capasity.add("0.7");
+        capasity.add("0.8");
+        capasity.add("0.9");
+        capasity.add("1");
+        capasity.add("1.1");
+        capasity.add("1.2");
+        capasity.add("1.3");
+        capasity.add("1.4");
+        capasity.add("1.5");
+        capasity.add("1.6");
+        capasity.add("1.7");
+        capasity.add("1.8");
+        capasity.add("1.9");
+        capasity.add("2");
+        capasity.add("2.1");
+        capasity.add("2.2");
+        capasity.add("2.3");
+        capasity.add("2.4");
+        capasity.add("2.5");
+        capasity.add("2.6");
+        capasity.add("2.7");
+        capasity.add("2.8");
+        capasity.add("2.9");
+        capasity.add("3");
+        capasity.add("3.1");
+        capasity.add("3.2");
+        capasity.add("3.3");
+        capasity.add("3.4");
+        capasity.add("3.5");
+        capasity.add("3.6");
+        capasity.add("3.7");
+        capasity.add("3.8");
+        capasity.add("3.9");
+        capasity.add("4");
+        capasity.add("4.1");
+        capasity.add("4.2");
+        capasity.add("4.3");
+        capasity.add("4.4");
+        capasity.add("4.5");
+        capasity.add("4.6");
+        capasity.add("4.7");
+        capasity.add("4.8");
+        capasity.add("4.9");
+        capasity.add("5");
+        capasity.add("5.1");
+        capasity.add("5.2");
+        capasity.add("5.3");
+        capasity.add("5.4");
+        capasity.add("5.5");
+        capasity.add("5.6");
+        capasity.add("5.7");
+        capasity.add("5.8");
+        capasity.add("5.9");
+        capasity.add("6");
+        capasity.add("6.1");
+        capasity.add("6.2");
+        capasity.add("6.3");
+        capasity.add("6.4");
+        capasity.add("6.5");
+        capasity.add("6.6");
+        capasity.add("6.7");
+        capasity.add("6.8");
+        capasity.add("6.9");
+        capasity.add("7");
+        capasity.add("7.1");
+        capasity.add("7.2");
+        capasity.add("7.3");
+        capasity.add("7.4");
+        capasity.add("7.5");
+        capasity.add("7.6");
+        capasity.add("7.7");
+        capasity.add("7.8");
+        capasity.add("7.9");
+        capasity.add("8");
+        capasity.add("8.1");
+        capasity.add("8.2");
+        capasity.add("8.3");
+        capasity.add("8.4");
+        capasity.add("8.5");
+        capasity.add("8.6");
+        capasity.add("8.7");
+        capasity.add("8.8");
+        capasity.add("8.9");
+        capasity.add("9");
+        capasity.add("9.1");
+        capasity.add("9.2");
+        capasity.add("9.3");
+        capasity.add("9.4");
+        capasity.add("9.5");
+        capasity.add("9.6");
+        capasity.add("9.7");
+        capasity.add("9.8");
+        capasity.add("9.9");
+        capasity.add("10");
+        capasity.add("10.1");
+        capasity.add("10.2");
+        capasity.add("10.3");
+        capasity.add("10.4");
+        capasity.add("10.5");
+        capasity.add("10.6");
+        capasity.add("10.7");
+        capasity.add("10.8");
+        capasity.add("10.9");
+        capasity.add("11");
+        capasity.add("11.1");
+        capasity.add("11.2");
+        capasity.add("11.3");
+        capasity.add("11.4");
+        capasity.add("11.5");
+        capasity.add("11.6");
+        capasity.add("11.7");
+        capasity.add("11.8");
+        capasity.add("11.9");
+        capasity.add("12");
+        return capasity;
+    }
+
+
+    public static List<String> getHomeSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Квартиры");
         categories.add("Новостройка");
@@ -32,7 +2445,7 @@ public class Data {
         return categories;
     }
 
-    public static List<String> getGardenSubCategories(){
+    public static List<String> getGardenSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Мебель");
         categories.add("Ремонт и строительство");
@@ -51,7 +2464,7 @@ public class Data {
         return categories;
     }
 
-    public static List<String> getServicesSubCategory(){
+    public static List<String> getServicesSubCategory() {
         List<String> categories = new ArrayList<>();
         categories.add("Авто услуги");
         categories.add("Строительство и ремонт");
@@ -78,7 +2491,7 @@ public class Data {
         return categories;
     }
 
-    public static List<String> getElectronicSubCategories(){
+    public static List<String> getElectronicSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Мобильные телефоны и аксессуары");
         categories.add("Компьютеры, ноутбуки и планшеты");
@@ -92,14 +2505,14 @@ public class Data {
         return categories;
     }
 
-    public static List<String> getWorkSubCategories(){
+    public static List<String> getWorkSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Поиск сотрудников");
         categories.add("Ищу работу");
         return categories;
     }
 
-    public static List<String> getPrivateSubCategories(){
+    public static List<String> getPrivateSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Женская одежда");
         categories.add("Женская обувь");
@@ -112,7 +2525,7 @@ public class Data {
         return categories;
     }
 
-    public static List<String> getAnimalSubCategories(){
+    public static List<String> getAnimalSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Зоотовары");
         categories.add("Коты");
@@ -125,7 +2538,7 @@ public class Data {
         return categories;
     }
 
-    public static List<String> getSportSubCategories(){
+    public static List<String> getSportSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Велосипеды");
         categories.add("Велоаксессуары");
@@ -136,7 +2549,8 @@ public class Data {
         categories.add("Книги, журналы, CD. DVD");
         return categories;
     }
-    public static String[] getMedicalSubCategories(){
+
+    public static String[] getMedicalSubCategories() {
         String[] medical = new String[14];
         medical[0] = "Маски медицинские";
         medical[1] = "Антисептики";
@@ -155,7 +2569,7 @@ public class Data {
         return medical;
     }
 
-    public static List<String> getKidsSubCategories(){
+    public static List<String> getKidsSubCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Детская одежда и обувь");
         categories.add("Детская мебель");
@@ -166,7 +2580,16 @@ public class Data {
         return categories;
     }
 
-    public static String[] getGoodCategorySpinner(){
+    public static List<String> getTaxiSubCategories(){
+        List<String> categories = new ArrayList<>();
+        categories.add("Городское такси");
+        categories.add("Междугороднее такси");
+        categories.add("Грузовые перевозки");
+        categories.add("Для торжеств");
+        return  categories;
+    }
+
+    public static String[] getGoodCategorySpinner() {
         String[] categoryModels = new String[12];
         categoryModels[0] = "Транспорт";
         categoryModels[1] = "Недвижимость";
@@ -183,7 +2606,7 @@ public class Data {
         return categoryModels;
     }
 
-    public static List<CategoryModel> getCategoryModels(){
+    public static List<CategoryModel> getCategoryModels() {
         List<CategoryModel> categoryModels = new ArrayList<>();
         categoryModels.add(new CategoryModel(R.drawable.all, "Все"));
         categoryModels.add(new CategoryModel(R.drawable.transport, "Транспорт"));
@@ -201,7 +2624,7 @@ public class Data {
         return categoryModels;
     }
 
-    public static ArrayList<CategoryModel> getGoodCategory(){
+    public static ArrayList<CategoryModel> getGoodCategory() {
         ArrayList<CategoryModel> categoryModels = new ArrayList<>();
         categoryModels.add(new CategoryModel(R.drawable.transport, "Транспорт"));
         categoryModels.add(new CategoryModel(R.drawable.house, "Недвижимость"));
@@ -233,5 +2656,514 @@ public class Data {
         categoryModels.add(new SecondCategoryModel(R.drawable.kids, "Детский мир", "Одежды для детей"));
         categoryModels.add(new SecondCategoryModel(R.drawable.present, "Отдам даром", "Вещи, домашние животные"));
         return categoryModels;
+    }
+
+
+    public static List<String> getRegions() {
+        List<String> regionsList = new ArrayList<>();
+        regionsList.add("Чуйская область");
+        regionsList.add("Иссык-Кульская область");
+        regionsList.add("Таласская область");
+        regionsList.add("Нарынская область");
+        regionsList.add("Джалал-Абадская область");
+        regionsList.add("Ошская область");
+        regionsList.add("Баткенская область");
+        return regionsList;
+    }
+
+    public static List<String> getChuiCities() {
+        List<String> chuiCitiesList = new ArrayList<>();
+        chuiCitiesList.add("Бишкек");
+        chuiCitiesList.add("Беловодское");
+        chuiCitiesList.add("Каинды");
+        chuiCitiesList.add("Кант");
+        chuiCitiesList.add("Кара-Балта");
+        chuiCitiesList.add("Кемин");
+        chuiCitiesList.add("Лебединовка");
+        chuiCitiesList.add("Орловка");
+        chuiCitiesList.add("Сокулук");
+        chuiCitiesList.add("Токмок");
+        chuiCitiesList.add("Шопоков");
+        chuiCitiesList.add("с. Айдарбек");
+        chuiCitiesList.add("с. Ак-Башат (Жайылский р-н)");
+        chuiCitiesList.add("с. Ак-Башат (Московский р-н)");
+        chuiCitiesList.add("с. Ак-Бешим");
+        chuiCitiesList.add("с. Ак-Соок");
+        chuiCitiesList.add("с. Ак-Суу");
+        chuiCitiesList.add("с. Ак-Торпок");
+        chuiCitiesList.add("c. Тюз");
+        chuiCitiesList.add("с. Аламудун");
+        chuiCitiesList.add("с. Алга");
+        chuiCitiesList.add("с. Александровка");
+        chuiCitiesList.add("с. Алексеевка");
+        chuiCitiesList.add("с. Алмалуу (Кеминский р-н)");
+        chuiCitiesList.add("с. Алмалуу (Ыссык-Атинский р-н)");
+        chuiCitiesList.add("с. Алтымыш");
+        chuiCitiesList.add("с. Алтын");
+        chuiCitiesList.add("с. Арал");
+        chuiCitiesList.add("с. Арашан");
+        chuiCitiesList.add("с. Арчалы");
+        chuiCitiesList.add("с. Ат-Башы");
+        chuiCitiesList.add("с. Байгельди");
+        chuiCitiesList.add("с. Байтик");
+        chuiCitiesList.add("с. Баш-Кара-Суу");
+        chuiCitiesList.add("с. Бейшеке");
+        chuiCitiesList.add("с. Бекитай");
+        chuiCitiesList.add("с. Беловодское");
+        chuiCitiesList.add("с. Белый Пикет");
+        chuiCitiesList.add("с. Беш-Кунгей");
+        chuiCitiesList.add("с. Беш-Орук");
+        chuiCitiesList.add("с. Бирдик (Аламудунский р-н)");
+        chuiCitiesList.add("с. Бирдик (Ысык-Атинский р-н)");
+        chuiCitiesList.add("с. Боксо-Жол");
+        chuiCitiesList.add("с. Борду");
+        chuiCitiesList.add("с. Бордунский");
+        chuiCitiesList.add("с. Боролдой");
+        chuiCitiesList.add("с. Бурана");
+        chuiCitiesList.add("с. Васильевка");
+        chuiCitiesList.add("с. Верхний Орок");
+        chuiCitiesList.add("с. Виноградное (Аламудунский р-н)");
+        chuiCitiesList.add("с. Виноградное (Чуйский р-н)");
+        chuiCitiesList.add("с. Военно-Антоновка");
+        chuiCitiesList.add("с. Вознесеновка");
+        chuiCitiesList.add("с. Восток");
+        chuiCitiesList.add("с. Вторая Пятилетка");
+        chuiCitiesList.add("с. Гавриловка");
+        chuiCitiesList.add("с. Горная Маевка");
+        chuiCitiesList.add("с. Горная Серафимовка");
+        chuiCitiesList.add("с. Гроздь");
+        chuiCitiesList.add("с. Дайырбек");
+        chuiCitiesList.add("с. Дачное");
+        chuiCitiesList.add("с. Ден-Арык");
+        chuiCitiesList.add("с. Джал");
+        chuiCitiesList.add("с. Джаны-Алыш");
+        chuiCitiesList.add("с. Джаны-Джол (Кеминский р-н)");
+        chuiCitiesList.add("с. Джаны-Джол (Чуйский р-н)");
+        chuiCitiesList.add("с. Джекен");
+        chuiCitiesList.add("с. Джель-Арык");
+        chuiCitiesList.add("с. Джон-Арык");
+        chuiCitiesList.add("с. Дмитриевка");
+        chuiCitiesList.add("с. Дорожное");
+        chuiCitiesList.add("с. Достук");
+        chuiCitiesList.add("с. Жайыл");
+        chuiCitiesList.add("с. Жайылма");
+        chuiCitiesList.add("с. Жангарач");
+        chuiCitiesList.add("с. Заводское");
+        chuiCitiesList.add("с. Заречное");
+        chuiCitiesList.add("с. Заря (Московский р-н)");
+        chuiCitiesList.add("с. Заря (Сокулукский р-н)");
+        chuiCitiesList.add("с. Ивановка");
+        chuiCitiesList.add("Ийри-Суу");
+        chuiCitiesList.add("с. Ильичевское");
+        chuiCitiesList.add("с. им. М. Чокморова");
+        chuiCitiesList.add("с. Ичке-Суу");
+        chuiCitiesList.add("с. Каинды");
+        chuiCitiesList.add("с. Кайсар");
+        chuiCitiesList.add("с. Кайырма (Аламудунский р-н)");
+        chuiCitiesList.add("с. Кайырма (Жайылский р-н)");
+        chuiCitiesList.add("с. Калдык");
+        chuiCitiesList.add("с. Калмак-Ашуу");
+        chuiCitiesList.add("с. Камышановка");
+        chuiCitiesList.add("с. Кара-Булак");
+        chuiCitiesList.add("с. Кара-Джыгач");
+        chuiCitiesList.add("с. Кара-Добо");
+        chuiCitiesList.add("с. Кара-Сакал");
+        chuiCitiesList.add("с. Кара-Суу");
+        chuiCitiesList.add("с. Карагай-Булак");
+        chuiCitiesList.add("с. Каракол");
+        chuiCitiesList.add("с. Кашка-Баш");
+        chuiCitiesList.add("с. Кашка-Суу");
+        chuiCitiesList.add("с. Кашкелен");
+        chuiCitiesList.add("с. Кепер-Арык");
+        chuiCitiesList.add("с. Кичи-Кемин");
+        chuiCitiesList.add("с. Кожомкул");
+        chuiCitiesList.add("с. Кой-Таш");
+        chuiCitiesList.add("с. Кок-Джар");
+        chuiCitiesList.add("с. Константиновка");
+        chuiCitiesList.add("с. Короол-Добо");
+        chuiCitiesList.add("с. Красная Речка");
+        chuiCitiesList.add("с. Курпульдок");
+        chuiCitiesList.add("с. Кыз-Кыя");
+        chuiCitiesList.add("с. Кызыл-Байрак");
+        chuiCitiesList.add("с. Кызыл-Бирдик");
+        chuiCitiesList.add("с. Кызыл-Дыйкан");
+        chuiCitiesList.add("с. Кызыл-Ой");
+        chuiCitiesList.add("с. Кызыл-Октябрь");
+        chuiCitiesList.add("с. Кызыл-Суу");
+        chuiCitiesList.add("с. Кызыл-Туу");
+        chuiCitiesList.add("с. Лебединовка");
+        chuiCitiesList.add("с. Ленинское");
+        chuiCitiesList.add("с. Лесное");
+        chuiCitiesList.add("с. Любяное");
+        chuiCitiesList.add("с. Люксембург");
+        chuiCitiesList.add("с. Маевка");
+        chuiCitiesList.add("с. Малиновка");
+        chuiCitiesList.add("с. Маловодное (Московский р-н)");
+        chuiCitiesList.add("с. Маловодное (Сокулукский р-н)");
+        chuiCitiesList.add("с. Малтабар");
+        chuiCitiesList.add("с. Милянфан");
+        chuiCitiesList.add("с. Мирное");
+        chuiCitiesList.add("с. Молдовановка");
+        chuiCitiesList.add("с. Монолдор");
+        chuiCitiesList.add("с. Мраморное");
+        chuiCitiesList.add("с. Мураке");
+        chuiCitiesList.add("с. Мыкан");
+        chuiCitiesList.add("с. Мээнеткеч");
+        chuiCitiesList.add("с. Нижнечуйское");
+        chuiCitiesList.add("с. Нижний Ноорус");
+        chuiCitiesList.add("с. Нижняя Ала-Арча");
+        chuiCitiesList.add("с. Нижняя Серафимовка");
+        chuiCitiesList.add("с. Новое");
+        chuiCitiesList.add("с. Новомихайловка");
+        chuiCitiesList.add("с. Новониколаевка");
+        chuiCitiesList.add("с. Новопавловка");
+        chuiCitiesList.add("с. Новопакровка");
+        chuiCitiesList.add("с. Норус");
+        chuiCitiesList.add("с. Озёрное (Аламудунский р-н)");
+        chuiCitiesList.add("с. Озёрное (Панфиловский р-н)");
+        chuiCitiesList.add("с. Ойронду");
+        chuiCitiesList.add("с. Октябрьское (Аламудунский р-н)");
+        chuiCitiesList.add("с. Октябрьское (Панфиловский р-н)");
+        chuiCitiesList.add("с. Орто-Кайырма");
+        chuiCitiesList.add("с. Орто-Суу");
+        chuiCitiesList.add("с. Панфиловское (Панфиловский р-н)");
+        chuiCitiesList.add("с. Первое Мая");
+        chuiCitiesList.add("с. Первомайское");
+        chuiCitiesList.add("с. Петрвка (Калининское)");
+        chuiCitiesList.add("с. Петровка (Московский р-н)");
+        chuiCitiesList.add("с. Петропавловка");
+        chuiCitiesList.add("с. Подгорное");
+        chuiCitiesList.add("с. Полевое");
+        chuiCitiesList.add("с. Полтавка");
+        chuiCitiesList.add("с. Предтеченка");
+        chuiCitiesList.add("с. Привольное");
+        chuiCitiesList.add("с. Пригородное");
+        chuiCitiesList.add("с. Прохладное");
+        chuiCitiesList.add("с. Рассвет");
+        chuiCitiesList.add("с. Ровное");
+        chuiCitiesList.add("с. Романовка");
+        chuiCitiesList.add("с. Рот-Фронт");
+        chuiCitiesList.add("с. Садовое (Аламудунский р-н)");
+        chuiCitiesList.add("с. Садовое (Московский р-н)");
+        chuiCitiesList.add("с. Садовое (Сокулукский р-н)");
+        chuiCitiesList.add("с. Садовое (Чуйский р-н)");
+        chuiCitiesList.add("с. Сайлык");
+        chuiCitiesList.add("с. Самансур");
+        chuiCitiesList.add("с. Сарбан");
+        chuiCitiesList.add("с. Сары-Булак");
+        chuiCitiesList.add("с. Сасык-Булак");
+        chuiCitiesList.add("с. Селекционное");
+        chuiCitiesList.add("с. Советское");
+        chuiCitiesList.add("с. Сокулук");
+        chuiCitiesList.add("с. Сосновка");
+        chuiCitiesList.add("с. Сретенка");
+        chuiCitiesList.add("с. Ставропавловка");
+        chuiCitiesList.add("с. Степное (Аламудунский р-н)");
+        chuiCitiesList.add("с. Степное (Жайылский р-н)");
+        chuiCitiesList.add("с. Суусамыр");
+        chuiCitiesList.add("с. Сынташ");
+        chuiCitiesList.add("с. Талды-Булак");
+        chuiCitiesList.add("с. Талтак");
+        chuiCitiesList.add("с. Тар-Суу");
+        chuiCitiesList.add("с. Татыр");
+        chuiCitiesList.add("с. Таш-Башат");
+        chuiCitiesList.add("с. Таш-Добо");
+        chuiCitiesList.add("с. Таш-Мойнок");
+        chuiCitiesList.add("с. Тегирменти");
+        chuiCitiesList.add("с. Темен-Суу");
+        chuiCitiesList.add("с. Тогуз-Булак");
+        chuiCitiesList.add("с. Токбай");
+        chuiCitiesList.add("с. Торт-Куль");
+        chuiCitiesList.add("с. Туз");
+        chuiCitiesList.add("с. Тунук");
+        chuiCitiesList.add("с. Тюз");
+        chuiCitiesList.add("с. Ударник");
+        chuiCitiesList.add("с. Уч-Эмчек");
+        chuiCitiesList.add("с. Учкун");
+        chuiCitiesList.add("с. Фёдоровка");
+        chuiCitiesList.add("с. Чалдовар");
+        chuiCitiesList.add("с. Чат-Коль");
+        chuiCitiesList.add("с. Чолок");
+        chuiCitiesList.add("с. Чолок-Арык");
+        chuiCitiesList.add("с. Чон-Арык");
+        chuiCitiesList.add("с. Чон-Джар");
+        chuiCitiesList.add("с. Чорголу");
+        chuiCitiesList.add("с. Чуйское (Аламудунский р-н)");
+        chuiCitiesList.add("с. Чуйское (Кеминский р-н)");
+        chuiCitiesList.add("с. Чым-Коргон");
+        chuiCitiesList.add("с. Шабдан");
+        chuiCitiesList.add("с. Шамшы");
+        chuiCitiesList.add("с. Эриктуу");
+        chuiCitiesList.add("с. Юрьевка");
+        return chuiCitiesList;
+    }
+
+    public static List<String> getIssykKulCities() {
+        List<String> issykKulCitiesList = new ArrayList<>();
+        issykKulCitiesList.add("Каракол");
+        issykKulCitiesList.add("Балыкчи");
+        issykKulCitiesList.add("Чолпон-Ата");
+        issykKulCitiesList.add("с. Ак-Терек");
+        issykKulCitiesList.add("с. Ак-Булак (Ак-Суйский р-н)");
+        issykKulCitiesList.add("с. Ак-Булак (Тюпский р-н");
+        issykKulCitiesList.add("с. Ак-Булун (Ак-Суйский р-н)");
+        issykKulCitiesList.add("с. Ак-Булун (Тюпский р-н)");
+        issykKulCitiesList.add("с. Ак-Добо");
+        issykKulCitiesList.add("с. Ак-Кочкор");
+        issykKulCitiesList.add("с. Ак-Олон");
+        issykKulCitiesList.add("с. Ак-Сай (Б.Мамбетовский аильный окр.)");
+        issykKulCitiesList.add("с. Ак-Сай (Тонский аильный окр.");
+        issykKulCitiesList.add("с. Ак-Суу (Теплоключенка)");
+        issykKulCitiesList.add("с. Ак-Чий");
+        issykKulCitiesList.add("с. Ак-Шыйрак");
+        issykKulCitiesList.add("с. Ала-Баш");
+        issykKulCitiesList.add("с. Ан-Остон");
+        issykKulCitiesList.add("с. Ананьево");
+        issykKulCitiesList.add("с. Арал");
+        issykKulCitiesList.add("с. Арчалы");
+        issykKulCitiesList.add("с. Баетовка");
+        issykKulCitiesList.add("с. Байзак");
+        issykKulCitiesList.add("с. Бактуу-Долоноту");
+        issykKulCitiesList.add("с. Балбай");
+        issykKulCitiesList.add("с. Балтабай");
+        issykKulCitiesList.add("с. Бар-Булак");
+        issykKulCitiesList.add("с. Барскаун");
+        issykKulCitiesList.add("с. Беловодское");
+        issykKulCitiesList.add("с. Бирлик");
+        issykKulCitiesList.add("с. Богатыровка");
+        issykKulCitiesList.add("с. Боз-Бешик");
+        issykKulCitiesList.add("с. Боз-Булун");
+        issykKulCitiesList.add("с. Боз-Учук");
+        issykKulCitiesList.add("с. Боконбаево");
+        issykKulCitiesList.add("с. Бору-Баш");
+        issykKulCitiesList.add("с. Бостери");
+        issykKulCitiesList.add("с. Булан-Соготту");
+        issykKulCitiesList.add("с. Бурма-Суу");
+        issykKulCitiesList.add("с. Григорьевка");
+        issykKulCitiesList.add("с. Григорьевская пристань");
+        issykKulCitiesList.add("с. Даркан");
+        issykKulCitiesList.add("с. Джаны-Арык");
+        issykKulCitiesList.add("с. Джеле-Добо");
+        issykKulCitiesList.add("с. Джениш");
+        issykKulCitiesList.add("с. Джер-Уй");
+        issykKulCitiesList.add("с. Джети-Огуз (Курорт)");
+        issykKulCitiesList.add("с. Джети-Огуз (село)");
+        issykKulCitiesList.add("с. Джол-Колот");
+        issykKulCitiesList.add("с. Джон-Булак");
+        issykKulCitiesList.add("с. Джууку");
+        issykKulCitiesList.add("с. Джылдыз");
+        issykKulCitiesList.add("с. Джылуу-Булак");
+        issykKulCitiesList.add("с. Долон");
+        issykKulCitiesList.add("с. Дон-Талаа");
+        issykKulCitiesList.add("с. Жалгыз-Орук");
+        issykKulCitiesList.add("с. Жаркынбаево");
+        issykKulCitiesList.add("с. Жергез");
+        issykKulCitiesList.add("с. Жыргалан");
+        issykKulCitiesList.add("с. Зелёный Гай");
+        issykKulCitiesList.add("с. Иссык-Коль (Джети-Огузский р-н)");
+        issykKulCitiesList.add("с. Иссык-Коль (Тюпский р-н)");
+        issykKulCitiesList.add("с. Ичке-Булун");
+        issykKulCitiesList.add("с. Ичке-Джергез");
+        issykKulCitiesList.add("с. Ичке-Суу");
+        issykKulCitiesList.add("с. Кабак");
+        issykKulCitiesList.add("с. Каджи-Саз");
+        issykKulCitiesList.add("с. Каджи-Сай");
+        issykKulCitiesList.add("с. Кайнар");
+        issykKulCitiesList.add("с. Кайырма-Арык");
+        issykKulCitiesList.add("с. Калкагар");
+        issykKulCitiesList.add("с. Кара-Джал");
+        issykKulCitiesList.add("с. Кара-Коо");
+        issykKulCitiesList.add("с. Кара-Кыз");
+        issykKulCitiesList.add("с. Кара-Ой");
+        issykKulCitiesList.add("с. Кара-Талаа");
+        issykKulCitiesList.add("с. Кара-Шаар");
+        issykKulCitiesList.add("с. Каракол (Ак-Суйский р-н)");
+        issykKulCitiesList.add("с. Каракол (Джети-Огузский р-н)");
+        issykKulCitiesList.add("с. Каркыра");
+        issykKulCitiesList.add("с. Кароол-Добо");
+        issykKulCitiesList.add("с. Качыбек");
+        issykKulCitiesList.add("с. Кашат");
+        issykKulCitiesList.add("с. Кен-Суу");
+        issykKulCitiesList.add("с. Кереге-Таш");
+        issykKulCitiesList.add("с. Кичи-Джаргылчак");
+        issykKulCitiesList.add("с. Кичи-Орукту");
+        issykKulCitiesList.add("с. Коджояр");
+        issykKulCitiesList.add("с. Кок-Добо");
+        issykKulCitiesList.add("с. Кок-Мойнок-Второе");
+        issykKulCitiesList.add("с. Кок-Мойнок-Первое");
+        issykKulCitiesList.add("с. Кок-Сай");
+        issykKulCitiesList.add("с. Коль-Тор");
+        issykKulCitiesList.add("с. Конкино");
+        issykKulCitiesList.add("с. Конур-Олон");
+        issykKulCitiesList.add("с. Коочу");
+        issykKulCitiesList.add("с. Корумду (Иссык-Кульский р-н)");
+        issykKulCitiesList.add("с. Корумду (Тюпский р-н)");
+        issykKulCitiesList.add("с. Кош-Добо");
+        issykKulCitiesList.add("с. Кош-Коль");
+        issykKulCitiesList.add("с. Курбу");
+        issykKulCitiesList.add("с. Кургак-Айрык");
+        issykKulCitiesList.add("с. Курмонту");
+        issykKulCitiesList.add("с. Кутургу");
+        issykKulCitiesList.add("с. Кызыл-Кыя");
+        issykKulCitiesList.add("с. Кызыл-Орук");
+        issykKulCitiesList.add("с. Кызыл-Суу");
+        issykKulCitiesList.add("с. Кызыл-Туу");
+        issykKulCitiesList.add("с. Кытай");
+        issykKulCitiesList.add("с. Лесное");
+        issykKulCitiesList.add("с. Липенка");
+        issykKulCitiesList.add("с. Маман");
+        issykKulCitiesList.add("с. Мин-Булак");
+        issykKulCitiesList.add("с. Михайловка");
+        issykKulCitiesList.add("с. Мундуз");
+        issykKulCitiesList.add("с. Нововознесеновка");
+        issykKulCitiesList.add("с. Ой-Булак");
+        issykKulCitiesList.add("с. Ой-Тал");
+        issykKulCitiesList.add("с. Оргочор");
+        issykKulCitiesList.add("с. Орлиное");
+        issykKulCitiesList.add("с. Орнок");
+        issykKulCitiesList.add("с. Орто-Орукту");
+        issykKulCitiesList.add("с. Орукту-Хутор");
+        issykKulCitiesList.add("с. Отрадное");
+        issykKulCitiesList.add("с. Оттук");
+        issykKulCitiesList.add("с. Отуз-Уул");
+        issykKulCitiesList.add("с. Покровская Пристань");
+        issykKulCitiesList.add("с. Сан-Таш");
+        issykKulCitiesList.add("с. Саруу");
+        issykKulCitiesList.add("с. Сары-Булун");
+        issykKulCitiesList.add("с. Сары-Добо");
+        issykKulCitiesList.add("с. Сары-Камыш (Ак-Суйский район)");
+        issykKulCitiesList.add("с. Сары-Камыш (Иссык-Кульский район");
+        issykKulCitiesList.add("с. Сары-Ой");
+        issykKulCitiesList.add("с. Сары-Телегей");
+        issykKulCitiesList.add("с. Светлая Поляна");
+        issykKulCitiesList.add("с. Семёновка");
+        issykKulCitiesList.add("с. Талды-Булак");
+        issykKulCitiesList.add("с. Талды-Суу");
+        issykKulCitiesList.add("с. Тамга");
+        issykKulCitiesList.add("с. Тамчы");
+        issykKulCitiesList.add("с. Тасма");
+        issykKulCitiesList.add("с. Таш-Кыя");
+        issykKulCitiesList.add("с. Тегизчил");
+        issykKulCitiesList.add("с. Темир-Канат");
+        issykKulCitiesList.add("с. Темировка");
+        issykKulCitiesList.add("с. Тепке");
+        issykKulCitiesList.add("с. Тилекмат");
+        issykKulCitiesList.add("с. Тогуз-Булак (Тонский р-н)");
+        issykKulCitiesList.add("с. Тогуз-Булак (Тюпский р-н)");
+        issykKulCitiesList.add("с. Токтогул");
+        issykKulCitiesList.add("с. Токтоян");
+        issykKulCitiesList.add("с. Тон");
+        issykKulCitiesList.add("с. Торт-Коль");
+        issykKulCitiesList.add("с. Тору-Айгыр");
+        issykKulCitiesList.add("с. Тосор");
+        issykKulCitiesList.add("с. Туура-Суу (Тёрт-Кульский аильный окр.)");
+        issykKulCitiesList.add("с. Туура-Суу (Улаколский аильный окр.)");
+        issykKulCitiesList.add("с. Тюп");
+        issykKulCitiesList.add("с. Уч-Кайнар");
+        issykKulCitiesList.add("с. Фрунзенское");
+        issykKulCitiesList.add("с. Челпек");
+        issykKulCitiesList.add("с. Черик");
+        issykKulCitiesList.add("с. Чет-Байсоорун");
+        issykKulCitiesList.add("с. Чок-Тал");
+        issykKulCitiesList.add("с. Чолпон");
+        issykKulCitiesList.add("с. Чон-Джаргылчак");
+        issykKulCitiesList.add("с. Чон-Кызыл-Суу");
+        issykKulCitiesList.add("с. Чон-Орукту");
+        issykKulCitiesList.add("с. Чон-Сары-Ой");
+        issykKulCitiesList.add("с. Чон-Таш");
+        issykKulCitiesList.add("с. Чон-Тогуз-Бай");
+        issykKulCitiesList.add("с. Чырак");
+        issykKulCitiesList.add("с. Чырпыкты");
+        issykKulCitiesList.add("с. Шапак");
+        issykKulCitiesList.add("с. Шаты");
+        issykKulCitiesList.add("с. Шор-Булак");
+        issykKulCitiesList.add("с. Ынтымак");
+        issykKulCitiesList.add("с. Ырдык");
+        issykKulCitiesList.add("с. Энильчек");
+        issykKulCitiesList.add("с. Эшперово");
+        return issykKulCitiesList;
+    }
+
+    public static List<String> getTalasCities() {
+        List<String> talasCitiesList = new ArrayList<>();
+        talasCitiesList.add("Талас");
+        talasCitiesList.add("Бакай-Ата");
+        talasCitiesList.add("Кызыл-Адыр");
+        talasCitiesList.add("Покровка");
+        return talasCitiesList;
+    }
+
+    public static List<String> getNarynCities() {
+        List<String> narynCitiesList = new ArrayList<>();
+        narynCitiesList.add("Нарын");
+        narynCitiesList.add("Ат-Баши");
+        narynCitiesList.add("Баетово");
+        narynCitiesList.add("Кочкорка");
+        narynCitiesList.add("Чаек");
+        return narynCitiesList;
+    }
+
+    public static List<String> getDjalalAbadCities() {
+        List<String> djalalAbadCitiesList = new ArrayList<>();
+        djalalAbadCitiesList.add("Джалал-Абад");
+        djalalAbadCitiesList.add("Ала-Бука");
+        djalalAbadCitiesList.add("Базар-Коргон");
+        djalalAbadCitiesList.add("Казарман");
+        djalalAbadCitiesList.add("Каныш-Кия");
+        djalalAbadCitiesList.add("Кара-Куль");
+        djalalAbadCitiesList.add("Кербен");
+        djalalAbadCitiesList.add("Кок-Джангак");
+        djalalAbadCitiesList.add("Кочкор-Ата");
+        djalalAbadCitiesList.add("Кызыл-Жар");
+        djalalAbadCitiesList.add("Майлуу-Суу");
+        djalalAbadCitiesList.add("Массы");
+        djalalAbadCitiesList.add("Сузак");
+        djalalAbadCitiesList.add("Таш-Кумыр");
+        djalalAbadCitiesList.add("Токтогул");
+        djalalAbadCitiesList.add("Шамалды-Сай");
+        return djalalAbadCitiesList;
+    }
+
+    public static List<String> getOshCities() {
+        List<String> oshCitiesList = new ArrayList<>();
+        oshCitiesList.add("Ош");
+        oshCitiesList.add("Узген");
+        oshCitiesList.add("Кара-Суу");
+        oshCitiesList.add("с. Араван");
+        oshCitiesList.add("с. Барак");
+        oshCitiesList.add("с. Гулбахор");
+        oshCitiesList.add("с. Гульча");
+        oshCitiesList.add("с. Даарот-Коргон");
+        oshCitiesList.add("с. Джаны-Ноокат");
+        oshCitiesList.add("с. Кара-Кульджа");
+        oshCitiesList.add("с. Кароол");
+        oshCitiesList.add("с. Кашгар-Кыштак");
+        oshCitiesList.add("с. Коджо-Арык");
+        oshCitiesList.add("с. Куршаб");
+        oshCitiesList.add("с. Кызыл-Булак");
+        oshCitiesList.add("с. Кызыл-Кыштак");
+        oshCitiesList.add("с. Кыргыз-Чек");
+        oshCitiesList.add("с. Лаглан");
+        oshCitiesList.add("с. Найман");
+        oshCitiesList.add("с. Ноокат");
+        oshCitiesList.add("с. Сары-Таш");
+        oshCitiesList.add("с. Суфи-Курган");
+        oshCitiesList.add("с. Тепе-Коргон");
+        oshCitiesList.add("с. Шералы");
+        oshCitiesList.add("с. Эркештам");
+
+        return oshCitiesList;
+    }
+
+    public static List<String> getBatkenCities() {
+        List<String> batkenCitiesList = new ArrayList<>();
+        batkenCitiesList.add("Баткен");
+        batkenCitiesList.add("Айдаркен");
+        batkenCitiesList.add("Исфана");
+        batkenCitiesList.add("Кадамжай");
+        batkenCitiesList.add("Кызыл-Кия");
+        batkenCitiesList.add("Пульгон");
+        batkenCitiesList.add("Сулюкта");
+        return batkenCitiesList;
     }
 }
