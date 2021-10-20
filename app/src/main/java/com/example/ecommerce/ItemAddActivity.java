@@ -21,6 +21,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -32,7 +34,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,12 +42,12 @@ import com.example.ecommerce.adapters.CarModelsAdapter;
 import com.example.ecommerce.adapters.DownloadedPhotoAdapter;
 import com.example.ecommerce.adapters.GoodCategoryAdapter;
 import com.example.ecommerce.adapters.SlidingViewPagerAdapter;
-import com.example.ecommerce.goodfragments.GoodCategoryFragment;
 import com.example.ecommerce.models.Car;
 import com.example.ecommerce.models.CarModels;
 import com.example.ecommerce.models.CategoryModel;
 import com.example.ecommerce.models.Good;
 import com.example.ecommerce.models.GoodForFree;
+import com.example.ecommerce.models.User;
 import com.example.ecommerce.utils.Data;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -54,14 +55,20 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.santalu.maskedittext.MaskEditText;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,6 +82,9 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 public class ItemAddActivity extends AppCompatActivity implements View.OnClickListener {
 
+    Good carGood = new Good();
+    Good good = new Good();
+    Good goodForFree = new Good();
     FrameLayout mainFrameLayout;
     MaterialSpinner categorySpinner, subSpinner, currencySpinner, region_spinner, city_spinner,
             carModelSpinner, carTypeModelSpinner, yearSpinner, bodyTypeSpinner, fuelSpinner, driveUnitSpinner, carColorSpinner,
@@ -89,17 +99,21 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
     List<Uri> imagePathList = new ArrayList<>();
     FirebaseStorage storage;
     StorageReference reference;
+    int go;
     Button addButton;
     RecyclerView recyclerView;
     DownloadedPhotoAdapter adapter;
     SwitchCompat switchButton, my_number_switch;
-    MaterialEditText price;
+    MaterialEditText price, header, desc;
     MaskEditText phone_number;
     TextInputLayout phoneNumberInputLayout;
     ConstraintLayout price_constraint, transporConstraint;
     TextView chooseCategoryText, textPrice, textView11, textView12;
     RelativeLayout relative_dogovornaya;
-    DatabaseReference goodsReference;
+    DatabaseReference goodsReference, userReference;
+    FirebaseUser firebaseUser;
+    String userName = "";
+    List<String> imageUrlList = new ArrayList<>();
 
     String[] currencies = {"KGS", "USD"};
 
@@ -120,11 +134,43 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                                 .build()))
                 .build());
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        userReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        userReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if (user != null) {
+                    userName = user.getUsername().toString();
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        carGood.setGoodCategory("Транспорт");
+        region_spinner = findViewById(R.id.region_spinner);
+        city_spinner = findViewById(R.id.city_spinner);
+        categorySpinner = findViewById(R.id.category_spinner);
+        subSpinner = findViewById(R.id.subcategory_spinner);
+        imageButton = findViewById(R.id.imageButton);
+        addButton = findViewById(R.id.add_btn);
+        currencySpinner = findViewById(R.id.currency_spinner);
+        switchButton = findViewById(R.id.dogovornaya_switch);
+        my_number_switch = findViewById(R.id.my_number_switch);
+        phoneNumberInputLayout = findViewById(R.id.phoneNumberInputLayout);
+        phone_number = findViewById(R.id.phone_number);
+        header = findViewById(R.id.header_main);
+        desc = findViewById(R.id.desc_main);
         textView11 = findViewById(R.id.textView11);
         textView12 = findViewById(R.id.textView12);
 //        mainFrameLayout = view.findViewById(R.id.add_frame_layout);
-
+        price = findViewById(R.id.price);
+        price_constraint = findViewById(R.id.price_constraint);
+        textPrice = findViewById(R.id.textPrice);
+        relative_dogovornaya = findViewById(R.id.relative_dogovornaya);
         recyclerView = findViewById(R.id.photo_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(ItemAddActivity.this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -133,48 +179,219 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
 
         transporConstraint = findViewById(R.id.transporConstraint);
         carModelSpinner = findViewById(R.id.carModelSpinner);
-        carTypeModelSpinner = findViewById(R.id.carTypeModelSpinner);              /////////////////////
+        carTypeModelSpinner = findViewById(R.id.carTypeModelSpinner);
         yearSpinner = findViewById(R.id.yearSpinner);
-
-
         bodyTypeSpinner = findViewById(R.id.bodyTypeSpinner);
-
-
         fuelSpinner = findViewById(R.id.fuelSpinner);
-
-
         driveUnitSpinner = findViewById(R.id.driveUnitSpinner);
-
-
         carColorSpinner = findViewById(R.id.carColorSpinner);
-
-
         cppSpinner = findViewById(R.id.cppSpinner);
-
-
         steeringWheelSpinner = findViewById(R.id.steeringWheelSpinner);
-
-
         conditionSpinner = findViewById(R.id.conditionSpinner);
-
-
         engineCapacitySpinner = findViewById(R.id.engineCapacitySpinner);
 
 
-        textPrice = findViewById(R.id.textPrice);
-        relative_dogovornaya = findViewById(R.id.relative_dogovornaya);
+//        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                String subCategoryText = parent.getItemAtPosition(position).toString();
+//                good.setGoodSubCategory(subCategoryText);
+//                car.setCarSubCategory(subCategoryText);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+        currencySpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String currencyText = parent.getItemAtPosition(position).toString();
+                good.setGoodCurrency(currencyText);
+//                car.setCarCurrency(currencyText);
+                carGood.setGoodCurrency(currencyText);
+            }
 
-        price = findViewById(R.id.price);
-        price_constraint = findViewById(R.id.price_constraint);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-        phoneNumberInputLayout = findViewById(R.id.phoneNumberInputLayout);
-        phone_number = findViewById(R.id.phone_number);
+            }
+        });
+        city_spinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String cityText = parent.getItemAtPosition(position).toString();
+                good.setGoodCity(cityText);
+                goodForFree.setGoodCity(cityText);
+//                car.setCarCity(cityText);
+                carGood.setGoodCity(cityText);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+//        region_spinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                String regionText = parent.getItemAtPosition(position).toString();
+//                good.setGoodRegion(regionText);
+//                goodForFree.setGoodRegion(regionText);
+//                car.setCarRegion(regionText);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+
+        carTypeModelSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarBrand(parent.getItemAtPosition(position).toString());
+                carGood.setCarBrand(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        yearSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarYear(parent.getItemAtPosition(position).toString());
+                carGood.setCarYear(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        bodyTypeSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarBodyType(parent.getItemAtPosition(position).toString());
+                carGood.setCarBodyType(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarBodyType("Седан");
+            }
+        });
+        fuelSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarFuelType(parent.getItemAtPosition(position).toString());
+                carGood.setCarFuelType(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarFuelType("Бензин");
+            }
+        });
+        driveUnitSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarDriveUnit(parent.getItemAtPosition(position).toString());
+                carGood.setCarDriveUnit(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarDriveUnit("Передний");
+            }
+        });
+        carColorSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarColor(parent.getItemAtPosition(position).toString());
+                carGood.setCarColor(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarColor("Серебристый");
+            }
+        });
+        cppSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarCppType(parent.getItemAtPosition(position).toString());
+                carGood.setCarCppType(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarCppType("Механическая");
+            }
+        });
+        steeringWheelSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarSteeringWheel(parent.getItemAtPosition(position).toString());
+                carGood.setCarSteeringWheel(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarSteeringWheel("Слева");
+            }
+        });
+        conditionSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarCondition(parent.getItemAtPosition(position).toString());
+                carGood.setCarCondition(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarCondition("Новое");
+            }
+        });
+        engineCapacitySpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                car.setCarEngineCapacity(parent.getItemAtPosition(position).toString());
+                carGood.setCarEngineCapacity(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                car.setCarEngineCapacity("0.1");
+            }
+        });
+
+
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    price_constraint.setVisibility(View.GONE);
+                    good.setGoodPrice("Договорная");
+//                    car.setCarPrice("Договорная");
+                    carGood.setGoodPrice("Договорная");
+                } else {
+                    price_constraint.setVisibility(View.VISIBLE);
+                    good.setGoodPrice(price.getText().toString());
+//                    car.setCarPrice(price.getText().toString());
+                    carGood.setGoodPrice(price.getText().toString());
+                    Log.i("SettingPrice", "first");
+                }
+            }
+        });
+
         phoneNumberInputLayout.setHint("+996 (***) ** ** **");
         if (phone_number.length() <= 4) {
             phone_number.setHint("+996");
         }
 
-        my_number_switch = findViewById(R.id.my_number_switch);
+
         my_number_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -183,7 +400,6 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                     phone_number.setClickable(false);
                     phone_number.setFocusableInTouchMode(false);
                     phone_number.setText("556767255");
-
                 } else {
                     phone_number.setEnabled(true);
                     phone_number.setClickable(true);
@@ -193,46 +409,20 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        currencySpinner = findViewById(R.id.currency_spinner);
-        switchButton = findViewById(R.id.dogovornaya_switch);
-        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    price_constraint.setVisibility(View.GONE);
-                } else {
-                    price_constraint.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+        ArrayAdapter<String> currencyAdapter = new ArrayAdapter<String>(ItemAddActivity.this, android.R.layout.simple_spinner_item, currencies);
+        currencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currencySpinner.setAdapter(currencyAdapter);
 
-        imageButton = findViewById(R.id.imageButton);
-        addButton = findViewById(R.id.add_btn);
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImages();
-            }
-        });
 
         imageButton.setOnClickListener(this);
         //Spinner
-        categorySpinner = findViewById(R.id.category_spinner);
-        subSpinner = findViewById(R.id.subcategory_spinner);
         subSpinner.setLabel("Подкатегория");
 
         storage = FirebaseStorage.getInstance();
         reference = storage.getReference();
-
-
         GoodCategoryAdapter adapter = new GoodCategoryAdapter(ItemAddActivity.this, categoryModelArrayList);
         categorySpinner.setAdapter(adapter);
         categorySpinner.setLabel("Категория");
-//        categorySpinner.setError("Пожалуйста выберите категорию");
-
-        region_spinner = findViewById(R.id.region_spinner);
-        city_spinner = findViewById(R.id.city_spinner);
 
         ArrayAdapter<String> regionAdapter = new ArrayAdapter<>(ItemAddActivity.this, android.R.layout.simple_spinner_item, Data.getRegions());
         regionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -243,6 +433,10 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ArrayAdapter<String> cityAdapter = null;
                 String name = (String) parent.getItemAtPosition(position);
+                good.setGoodRegion(name);
+//                car.setCarRegion(name);
+                carGood.setGoodRegion(name);
+                goodForFree.setGoodRegion(name);
                 switch (name) {
                     case "Чуйская область":
                         cityAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
@@ -282,7 +476,6 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 city_spinner.setAdapter(cityAdapter);
                 city_spinner.setLabel("Город (село)");
-                Toast.makeText(ItemAddActivity.this, String.valueOf(parent.getItemAtPosition(position)), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -291,17 +484,17 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        ArrayAdapter<String> currencyAdapter = new ArrayAdapter<String>(ItemAddActivity.this, android.R.layout.simple_spinner_item, currencies);
-        currencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        currencySpinner.setAdapter(currencyAdapter);
 
         categorySpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ArrayAdapter<String> subAdapter = null;
-
                 CategoryModel model = (CategoryModel) adapterView.getItemAtPosition(i);
                 String name = model.getCategoryName();
+                good.setGoodCategory(name);
+                goodForFree.setGoodCategory(name);
+//                car.setCarCategory(name);
+                carGood.setGoodCategory(name);
                 if (name.equals("Такси") || name.equals("Услуги")) {
                     textView11.setText("Заголовок услуги");
                     textView12.setText("Описание услуги");
@@ -323,9 +516,13 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (parent.getItemAtPosition(position).equals("Легковые автомобили")) {
                                     transporConstraint.setVisibility(View.VISIBLE);
+                                    price_constraint.setVisibility(View.VISIBLE);
+//                                    car.setCarSubCategory(parent.getItemAtPosition(position).toString());
+                                    carGood.setGoodSubCategory(parent.getItemAtPosition(position).toString());
                                     getCarDetails();
                                 } else {
                                     transporConstraint.setVisibility(View.GONE);
+                                    good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
                                 }
                             }
 
@@ -340,33 +537,83 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getHomeSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Квартиры");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Такси":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getTaxiSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Городское такси");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Электроника":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getElectronicSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Мобильные телефоны и аксессуары");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Услуги":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getServicesSubCategory());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Авто услуги");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Работа":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getWorkSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Поиск сотрудников");
                         subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
                                 if (parent.getItemAtPosition(position).equals("Поиск сотрудников")) {
                                     textView11.setText("Заголовок работы");
                                     textView12.setText("Описание работы");
@@ -387,30 +634,90 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getPrivateSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Женская одежда");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Животные":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getAnimalSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Зоотовары");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Спорт и хобби":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getSportSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Велосипеды");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Медтовары":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getMedicalSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Маски медицинские");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Детский мир":
                         setVisibilities();
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
                                 android.R.layout.simple_spinner_item, Data.getKidsSubCategories());
                         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        good.setGoodSubCategory("Десткая одежда и обувь");
+                        subSpinner.setItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                good.setGoodSubCategory(parent.getItemAtPosition(position).toString());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
                         break;
                     case "Отдам даром":
                         chooseCategoryText.setVisibility(View.GONE);
@@ -419,11 +726,10 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                         textPrice.setVisibility(View.GONE);
                         relative_dogovornaya.setVisibility(View.GONE);
                         transporConstraint.setVisibility(View.GONE);
-
                         subAdapter = new ArrayAdapter<String>(ItemAddActivity.this, android.R.layout.simple_spinner_item, Data.getKidsSubCategories());
+                        break;
                 }
                 subSpinner.setAdapter(subAdapter);
-                Toast.makeText(ItemAddActivity.this, String.valueOf(adapterView.getItemAtPosition(i)), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -435,7 +741,13 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
         ImageView closeImage = findViewById(R.id.closeImage);
         closeImage.setOnClickListener(this);
 
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImages();
 
+            }
+        });
     }
 
     private void setFragment(Fragment fragment) {
@@ -467,42 +779,49 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void uploadImages() {
-        final ProgressDialog dialog = new ProgressDialog(ItemAddActivity.this);
-        if (imagePathList != null) {
-            final StorageReference ref = reference.child("images/" + UUID.randomUUID().toString());
-            final List<String> urlStrings = new ArrayList<>();
 
-            dialog.setTitle("Загрузка...");
-            dialog.show();
-            for (int i = 0; i < imagePathList.size(); i++) {
-                Uri individualImage = imagePathList.get(i);
-                final StorageReference imageName = ref.child("Images" + individualImage.getLastPathSegment());
-                imageName.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        dialog.dismiss();
-                        imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        if (!TextUtils.isEmpty(String.valueOf(header.getText())) && !TextUtils.isEmpty(String.valueOf(desc.getText())) && String.valueOf(phone_number.getText()).length()==19) {
+            Log.i("PhoneLength", String.valueOf(phone_number.getText().length()));
+            if (!TextUtils.isEmpty(carGood.getGoodPrice()) || !TextUtils.isEmpty(good.getGoodPrice()) || !TextUtils.isEmpty(goodForFree.getGoodPrice()) || price_constraint.getVisibility()==View.VISIBLE&&!TextUtils.isEmpty(String.valueOf(price.getText()))) {
+
+
+                final ProgressDialog dialog = new ProgressDialog(ItemAddActivity.this);
+                if (imagePathList != null) {
+                    final StorageReference ref = reference.child("images/" + UUID.randomUUID().toString());
+                    final List<String> urlStrings = new ArrayList<>();
+                    dialog.setTitle("Загрузка...");
+                    dialog.show();
+                    for (int i = 0; i < imagePathList.size(); i++) {
+                        Uri individualImage = imagePathList.get(i);
+                        final StorageReference imageName = ref.child("Images" + individualImage.getLastPathSegment());
+                        imageName.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
-                            public void onSuccess(Uri uri) {
-                                urlStrings.add(String.valueOf(uri));
-                                if (urlStrings.size() == imagePathList.size()) {
-                                    storeLink(urlStrings);
-                                }
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                dialog.dismiss();
+                                imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        imageUrlList.add(String.valueOf(uri));
+                                        Log.i("GETIMAGE", "GETTINGIMAGES");
+                                        urlStrings.add(String.valueOf(uri));
+                                        if (urlStrings.size() == imagePathList.size()) {
+                                            storeLink(urlStrings);
+                                        }
+
+                                    }
+                                });
+                            }
+                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                                double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                                dialog.setMessage("Загружено: " + (int) (progress) + "%");
+
                             }
                         });
+                        go++;
                     }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                        dialog.setMessage("Загружено: " + (int) (progress) + "%");
-
-                    }
-                });
-
-            }
-
-        }
+                }
 //        if (imageUri != null) {
 //
 //            StorageReference ref = reference.child("images/" + UUID.randomUUID().toString());
@@ -528,6 +847,16 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
 //                    });
 //
 //        }
+            }
+            else {
+                Log.i("PriceFalse", "Price False");
+                Toast.makeText(ItemAddActivity.this, "Все поля должны быть заполнены", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Log.i("PhoneLength", String.valueOf(phone_number.getText().length()));
+            Toast.makeText(ItemAddActivity.this, "Все поля должны быть заполнены", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -537,7 +866,6 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
 
         for (int i = 0; i < urlStrings.size(); i++) {
             hashMap.put("ImgLink" + i, urlStrings.get(i));
-
         }
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
 
@@ -547,8 +875,94 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ItemAddActivity.this, "Successfully Uplosded", Toast.LENGTH_SHORT).show();
+
+                                    if (transporConstraint.getVisibility() == View.VISIBLE) {
+                                        carGood.setUserID(String.valueOf(firebaseUser.getUid()));
+                                        carGood.setUserName(userName);
+                                        carGood.setGoodImagesDownloadUrl(imageUrlList);
+                                        carGood.setGoodDescription(desc.getText().toString());
+                                        carGood.setGoodHeader(header.getText().toString());
+                                        carGood.setGoodPhoneNumber(phoneNumberFilter(phone_number.getText().toString()));
+                                        if (price_constraint.getVisibility() == View.VISIBLE) {
+                                            carGood.setGoodPrice(price.getText().toString());
+                                            Log.i("SettingPrice", "Second");
+                                        } else {
+                                            carGood.setGoodPrice("Договорная");
+                                        }
+//                                        car.setUserID(String.valueOf(firebaseUser.getUid()));
+//                                        car.setCarImagesDownloadUrl(imageUrlList);
+//                                        car.setCarDescription(desc.getText().toString());
+//                                        car.setCarHeader(header.getText().toString());
+//                                        car.setCarPhoneNumber(phoneNumberFilter(phone_number.getText().toString()));
+//                                        if (price_constraint.getVisibility() == View.VISIBLE) {
+//                                            car.setCarPrice(price.getText().toString());
+//                                        } else {
+//                                            car.setCarPrice("Договорная");
+//                                        }
+                                        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("Transport").push();
+//                                        if (!TextUtils.isEmpty(carGood.getGoodHeader()) && !TextUtils.isEmpty(carGood.getGoodDescription()) && carGood.getGoodImagesDownloadUrl() != null &&
+//                                                !TextUtils.isEmpty(carGood.getGoodPrice()) && carGood.getGoodPhoneNumber().length() == 13) {
+                                            goodsReference.setValue(carGood).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Toast.makeText(ItemAddActivity.this, "Объявление успешно создано", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+//                                        } else {
+//                                            Toast.makeText(ItemAddActivity.this, "Все поля должны быть заполнены", Toast.LENGTH_SHORT).show();
+//                                        }
+                                        imageUrlList.clear();
+                                    } else if (subSpinner.getVisibility() == View.GONE) {
+                                        goodForFree.setUserID(String.valueOf(firebaseUser.getUid()));
+                                        goodForFree.setUserName(userName);
+                                        goodForFree.setGoodImagesDownloadUrl(imageUrlList);
+                                        goodForFree.setGoodHeader(header.getText().toString());
+                                        goodForFree.setGoodDescription(desc.getText().toString());
+                                        goodForFree.setGoodPhoneNumber(phoneNumberFilter(phone_number.getText().toString()));
+                                        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("ForFree").push();
+//                                        if (!TextUtils.isEmpty(goodForFree.getGoodHeader()) && !TextUtils.isEmpty(goodForFree.getGoodDescription()) && goodForFree.getGoodImagesDownloadUrl() != null && goodForFree.getGoodPhoneNumber().length() == 13) {
+                                            goodsReference.setValue(goodForFree).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Toast.makeText(ItemAddActivity.this, "Объявление успешно создано", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+//                                        } else {
+//                                            Toast.makeText(ItemAddActivity.this, "Все поля должны быть заполнены", Toast.LENGTH_SHORT).show();
+//                                        }
+                                        imageUrlList.clear();
+                                    } else {
+                                        good.setUserID(String.valueOf(firebaseUser.getUid()));
+                                        good.setUserName(userName);
+                                        good.setGoodImagesDownloadUrl(imageUrlList);
+                                        good.setGoodHeader(header.getText().toString());
+                                        good.setGoodDescription(desc.getText().toString());
+                                        good.setGoodPhoneNumber(phoneNumberFilter(phone_number.getText().toString()));
+                                        if (price_constraint.getVisibility() == View.VISIBLE) {
+                                            good.setGoodPrice(price.getText().toString());
+                                        } else {
+                                            good.setGoodPrice("Договорная");
+                                        }
+                                        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("AnyGood").push();
+//                                        if (!TextUtils.isEmpty(good.getGoodHeader()) && !TextUtils.isEmpty(good.getGoodDescription()) && good.getGoodImagesDownloadUrl() != null &&
+//                                                !TextUtils.isEmpty(good.getGoodPrice()) && good.getGoodPhoneNumber().length() == 13) {
+                                            goodsReference.setValue(good).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Toast.makeText(ItemAddActivity.this, "Объявление успешно создано", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+//                                        } else {
+//                                            Toast.makeText(ItemAddActivity.this, "Все поля должны быть заполнены", Toast.LENGTH_SHORT).show();
+//                                        }
+                                        imageUrlList.clear();
+
+                                    }
+                                    Toast.makeText(ItemAddActivity.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                                 }
+                                Intent intent = new Intent(ItemAddActivity.this, DashboardActivity.class);
+                                startActivity(intent);
+
                             }
                         }
                 ).addOnFailureListener(new OnFailureListener() {
@@ -1026,13 +1440,9 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
                                 android.R.layout.simple_spinner_item, Data.getUazSeries());
                         carTypeModelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         break;
-                    case "Другое":
-                        carTypeModelAdapter = new ArrayAdapter<String>(ItemAddActivity.this,
-                                android.R.layout.simple_spinner_item, Data.getUazSeries());
-                        carTypeModelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        Toast.makeText(ItemAddActivity.this, "Any tipes of transport", Toast.LENGTH_SHORT).show();
-                        break;
                 }
+//                car.setCarModel(name);
+                carGood.setCarModel(name);
                 carTypeModelSpinner.setAdapter(carTypeModelAdapter);
             }
 
@@ -1041,7 +1451,6 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
-
 
         ArrayAdapter<String> yearAdapter = new ArrayAdapter<String>(ItemAddActivity.this, android.R.layout.simple_spinner_item, Data.getCarYear());
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1089,53 +1498,13 @@ public class ItemAddActivity extends AppCompatActivity implements View.OnClickLi
         engineCapacitySpinner.setLabel("Объем двигателя");
     }
 
-    public void addCarWithPrice(String carSubCategory, String carModel, String carBrand, String carYear, String carBodyType, String carFuelType, String carDriveUnit,
-                       String carColor, String carCppType, String carSteeringWheel, String carCondition, String carEngineCapacity, String carHeader,
-                       String carDescription, String carPrice, String carCurrency, List<String> carImagesDownloadUrl, String carRegion, String carCity,
-                       String carPhoneNumber) {
-
-        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("Transport").push();
-
-        Car car = new Car(carSubCategory, carModel, carBrand, carYear, carBodyType, carFuelType, carDriveUnit, carColor, carCppType,
-                carSteeringWheel, carCondition, carEngineCapacity, carHeader, carDescription, carPrice, carCurrency, carImagesDownloadUrl,
-                carRegion, carCity, carPhoneNumber);
-
-    }
-
-    public void addCarNoPrice(String carSubCategory, String carModel, String carBrand, String carYear, String carBodyType, String carFuelType,
-                              String carDriveUnit, String carColor, String carCppType, String carSteeringWheel, String carCondition, String carEngineCapacity,
-                              String carHeader, String carDescription, List<String> carImagesDownloadUrl, String carRegion, String carCity, String carPhoneNumber){
-
-        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("Transport").push();
-
-        Car car = new Car(carSubCategory, carModel, carBrand, carYear, carBodyType, carFuelType,
-                carDriveUnit, carColor, carCppType, carSteeringWheel, carCondition, carEngineCapacity,
-                carHeader, carDescription, carImagesDownloadUrl, carRegion, carCity, carPhoneNumber);
-    }
-
-    public void addGoodWithPrice(String goodSubCategory, String goodHeader, String goodDescription, String goodPrice, String goodCurrency,
-                                 List<String> goodImagesDownloadUrl, String goodRegion, String goodCity, String goodPhoneNumber){
-
-        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("AnyGood").push();
-
-        Good good = new Good(goodSubCategory, goodHeader, goodDescription, goodPrice, goodCurrency,
-                goodImagesDownloadUrl, goodRegion, goodCity, goodPhoneNumber);
-
-    }
-
-    public void addGoodNoPrice(String goodSubCategory, String goodHeader, String goodDescription, List<String> goodImagesDownloadUrl,
-                               String goodRegion, String goodCity, String goodPhoneNumber){
-        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("AnyGood").push();
-
-        Good good = new Good(goodSubCategory, goodHeader, goodDescription, goodImagesDownloadUrl,
-                goodRegion, goodCity, goodPhoneNumber);
-    }
-
-    public void addGoodForFree(String goodHeader, String goodDescription, List<String> goodImagesDownloadUrl, String goodRegion, String goodCity,
-                               String goodPhoneNumber){
-
-        goodsReference = FirebaseDatabase.getInstance().getReference("Goods").child("ForFree").push();
-        GoodForFree goodForFree = new GoodForFree(goodHeader, goodDescription, goodImagesDownloadUrl, goodRegion, goodCity, goodPhoneNumber);
-
+    public String phoneNumberFilter(String number) {
+        String filterNumber = "";
+        for (int i = 0; i < number.length(); i++) {
+            if (number.charAt(i) != ' ' && number.charAt(i) != '(' && number.charAt(i) != ')') {
+                filterNumber += number.charAt(i);
+            }
+        }
+        return filterNumber;
     }
 }

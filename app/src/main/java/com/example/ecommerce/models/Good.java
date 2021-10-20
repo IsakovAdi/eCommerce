@@ -3,6 +3,7 @@ package com.example.ecommerce.models;
 import java.util.List;
 
 public class Good {
+    private String goodCategory;
     private String goodSubCategory;
     private String goodHeader;
     private String goodDescription;
@@ -12,35 +13,133 @@ public class Good {
     private String goodRegion;
     private String goodCity;
     private String goodPhoneNumber;
+    private String userID;
+    private String userName;
+
+    private String carModel;
+    private String carBrand;
+    private String carYear;
+    private String carBodyType;
+    private String carFuelType;
+    private String carDriveUnit;
+    private String carColor;
+    private String carCppType;
+    private String carSteeringWheel;
+    private String carCondition;
+    private String carEngineCapacity;
 
     public Good(){}
 
-        // With price
-    public Good(String goodSubCategory, String goodHeader, String goodDescription, String goodPrice, String goodCurrency,
-                List<String> goodImagesDownloadUrl, String goodRegion, String goodCity, String goodPhoneNumber) {
-        this.goodSubCategory = goodSubCategory;
-        this.goodHeader = goodHeader;
-        this.goodDescription = goodDescription;
-        this.goodPrice = goodPrice;
-        this.goodCurrency = goodCurrency;
-        this.goodImagesDownloadUrl = goodImagesDownloadUrl;
-        this.goodRegion = goodRegion;
-        this.goodCity = goodCity;
-        this.goodPhoneNumber = goodPhoneNumber;
+    public String getUserName() {
+        return userName;
     }
 
-        // No price
-    public Good(String goodSubCategory, String goodHeader, String goodDescription, List<String> goodImagesDownloadUrl,
-                String goodRegion, String goodCity, String goodPhoneNumber) {
-        this.goodSubCategory = goodSubCategory;
-        this.goodHeader = goodHeader;
-        this.goodDescription = goodDescription;
-        this.goodPrice = goodPrice;
-        this.goodCurrency = goodCurrency;
-        this.goodImagesDownloadUrl = goodImagesDownloadUrl;
-        this.goodRegion = goodRegion;
-        this.goodCity = goodCity;
-        this.goodPhoneNumber = goodPhoneNumber;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public String getCarBrand() {
+        return carBrand;
+    }
+
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public String getCarYear() {
+        return carYear;
+    }
+
+    public void setCarYear(String carYear) {
+        this.carYear = carYear;
+    }
+
+    public String getCarBodyType() {
+        return carBodyType;
+    }
+
+    public void setCarBodyType(String carBodyType) {
+        this.carBodyType = carBodyType;
+    }
+
+    public String getCarFuelType() {
+        return carFuelType;
+    }
+
+    public void setCarFuelType(String carFuelType) {
+        this.carFuelType = carFuelType;
+    }
+
+    public String getCarDriveUnit() {
+        return carDriveUnit;
+    }
+
+    public void setCarDriveUnit(String carDriveUnit) {
+        this.carDriveUnit = carDriveUnit;
+    }
+
+    public String getCarColor() {
+        return carColor;
+    }
+
+    public void setCarColor(String carColor) {
+        this.carColor = carColor;
+    }
+
+    public String getCarCppType() {
+        return carCppType;
+    }
+
+    public void setCarCppType(String carCppType) {
+        this.carCppType = carCppType;
+    }
+
+    public String getCarSteeringWheel() {
+        return carSteeringWheel;
+    }
+
+    public void setCarSteeringWheel(String carSteeringWheel) {
+        this.carSteeringWheel = carSteeringWheel;
+    }
+
+    public String getCarCondition() {
+        return carCondition;
+    }
+
+    public void setCarCondition(String carCondition) {
+        this.carCondition = carCondition;
+    }
+
+    public String getCarEngineCapacity() {
+        return carEngineCapacity;
+    }
+
+    public void setCarEngineCapacity(String carEngineCapacity) {
+        this.carEngineCapacity = carEngineCapacity;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getGoodCategory() {
+        return goodCategory;
+    }
+
+    public void setGoodCategory(String goodCategory) {
+        this.goodCategory = goodCategory;
     }
 
     public String getGoodSubCategory() {

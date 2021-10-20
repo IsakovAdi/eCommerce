@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ecommerce.fragments.AdFragment;
 import com.example.ecommerce.fragments.FavouriteFragment;
@@ -18,11 +16,7 @@ import com.example.ecommerce.fragments.MainFragment;
 import com.example.ecommerce.fragments.NotificationsFragment;
 import com.example.ecommerce.fragments.SearchFragment;
 import com.example.ecommerce.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,10 +32,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -82,7 +73,7 @@ public class DashboardActivity extends AppCompatActivity {
         setFragment(new MainFragment());
 
         //Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.detailsActivityToolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -169,7 +160,8 @@ public class DashboardActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_search:
                         //todo nav_search
-                        setFragment(new SearchFragment());
+                        Intent intent = new Intent(DashboardActivity.this, SearchActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_favourites:
                         //todo nav_favourites

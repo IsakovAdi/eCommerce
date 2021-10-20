@@ -21,6 +21,7 @@ public class SlidingViewPagerAdapter extends PagerAdapter {
     private List<Uri> slidingImages;
     private LayoutInflater layoutInflater;
 
+
     public SlidingViewPagerAdapter(Context context, List<Uri> slidingImages) {
         this.context = context;
         this.slidingImages = slidingImages;
@@ -47,11 +48,16 @@ public class SlidingViewPagerAdapter extends PagerAdapter {
                 .centerInside()
                 .into(imageView);
         container.addView(item_view);
+
         return item_view;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((ConstraintLayout)object);
+    }
+
+    public interface SlidingInterface{
+        void onClick(int position);
     }
 }

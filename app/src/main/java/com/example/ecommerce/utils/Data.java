@@ -2483,7 +2483,7 @@ public class Data {
         categories.add("Рукоделие");
         categories.add("Няни, сиделки");
         categories.add("Юридические услуги");
-        categories.add("Ритульаные услуги");
+        categories.add("Ритуальные услуги");
         categories.add("Охранные услуги");
         categories.add("Риэлторские услуги");
         categories.add("Визы и путешествия");
@@ -2518,7 +2518,7 @@ public class Data {
         categories.add("Женская обувь");
         categories.add("Мужская одежда");
         categories.add("Мужская обувь");
-        categories.add("Свадебные платья и аксуссуары");
+        categories.add("Свадебные платья и аксессуары");
         categories.add("Аксессуары");
         categories.add("Красота и здоровье");
         categories.add("Другое");
@@ -2546,7 +2546,7 @@ public class Data {
         categories.add("Музыкальные инструменты");
         categories.add("Искусство и коллекционирование");
         categories.add("Охота и рыбалка");
-        categories.add("Книги, журналы, CD. DVD");
+        categories.add("Книги, журналы, CD/DVD");
         return categories;
     }
 
@@ -2554,7 +2554,7 @@ public class Data {
         String[] medical = new String[14];
         medical[0] = "Маски медицинские";
         medical[1] = "Антисептики";
-        medical[2] = "Гразусники, тепловизоры";
+        medical[2] = "Градусники, тепловизоры";
         medical[3] = "Кислородные концентраторы";
         medical[4] = "Пульсоксиметры";
         medical[5] = "Кислородные подушки";
@@ -2609,18 +2609,18 @@ public class Data {
     public static List<CategoryModel> getCategoryModels() {
         List<CategoryModel> categoryModels = new ArrayList<>();
         categoryModels.add(new CategoryModel(R.drawable.all, "Все"));
-        categoryModels.add(new CategoryModel(R.drawable.transport, "Транспорт"));
-        categoryModels.add(new CategoryModel(R.drawable.house, "Недвижимость"));
-        categoryModels.add(new CategoryModel(R.drawable.taxi, "Такси"));
-        categoryModels.add(new CategoryModel(R.drawable.electronic, "Электроника"));
-        categoryModels.add(new CategoryModel(R.drawable.uslugi, "Услуги"));
-        categoryModels.add(new CategoryModel(R.drawable.business, "Работа"));
-        categoryModels.add(new CategoryModel(R.drawable.private_things, "Личные вещи"));
-        categoryModels.add(new CategoryModel(R.drawable.animals, "Животные"));
-        categoryModels.add(new CategoryModel(R.drawable.sport, "Спорт и хобби"));
-        categoryModels.add(new CategoryModel(R.drawable.medicine, "Медтовары"));
-        categoryModels.add(new CategoryModel(R.drawable.kids, "Детский мир"));
-        categoryModels.add(new CategoryModel(R.drawable.present, "Отдам даром"));
+        categoryModels.add(new CategoryModel(R.drawable.transport, "Транспорт", "Автомобили Кыргызстана, автоаксессуары, автозапчасти"));
+        categoryModels.add(new CategoryModel(R.drawable.house, "Недвижимость", "Купля продажа и аренда недвижимости по всей стране"));
+        categoryModels.add(new CategoryModel(R.drawable.taxi, "Такси", "Услуги городской и межгородской такси "));
+        categoryModels.add(new CategoryModel(R.drawable.electronic, "Электроника", "Большой гопермаркет новой и Б/У электроники Кыргызстана"));
+        categoryModels.add(new CategoryModel(R.drawable.uslugi, "Услуги", "Ремонт, сервис и прочии услуги"));
+        categoryModels.add(new CategoryModel(R.drawable.business, "Работа", "Самые актуальные вакансии и квалифицированные сотрудники"));
+        categoryModels.add(new CategoryModel(R.drawable.private_things, "Личные вещи", "Second hand и продукция от лучших производителей мира и страны"));
+        categoryModels.add(new CategoryModel(R.drawable.animals, "Животные", "Животные-компаньоны, которые занимают досуг, доставляют удовольствие и с которыми можно общаться"));
+        categoryModels.add(new CategoryModel(R.drawable.sport, "Спорт и хобби", "Все для спортивного образа жизни"));
+        categoryModels.add(new CategoryModel(R.drawable.medicine, "Медтовары", "Лекарства и медтовары от проверенных производителей"));
+        categoryModels.add(new CategoryModel(R.drawable.kids, "Детский мир", "Все для детей"));
+        categoryModels.add(new CategoryModel(R.drawable.present, "Отдам даром", "Все что здесь находится Вы можете получить бесплатно:)"));
         return categoryModels;
     }
 

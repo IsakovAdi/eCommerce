@@ -3,6 +3,7 @@ package com.example.ecommerce.models;
 import java.util.List;
 
 public class Car {
+    private String carCategory;
     private String carSubCategory;
     private String carModel;
     private String carBrand;
@@ -23,62 +24,34 @@ public class Car {
     private String carRegion;
     private String carCity;
     private String carPhoneNumber;
+    private String userID;
+    private String userName;
 
-    public Car(){
 
+    public Car(){ }
+
+    public String getUserName() {
+        return userName;
     }
 
-    // Цена указана
-
-
-    public Car(String carSubCategory, String carModel, String carBrand, String carYear, String carBodyType, String carFuelType, String carDriveUnit,
-               String carColor, String carCppType, String carSteeringWheel, String carCondition, String carEngineCapacity, String carHeader,
-               String carDescription, String carPrice, String carCurrency, List<String> carImagesDownloadUrl, String carRegion, String carCity,
-               String carPhoneNumber) {
-        this.carSubCategory = carSubCategory;
-        this.carModel = carModel;
-        this.carBrand = carBrand;
-        this.carYear = carYear;
-        this.carBodyType = carBodyType;
-        this.carFuelType = carFuelType;
-        this.carDriveUnit = carDriveUnit;
-        this.carColor = carColor;
-        this.carCppType = carCppType;
-        this.carSteeringWheel = carSteeringWheel;
-        this.carCondition = carCondition;
-        this.carEngineCapacity = carEngineCapacity;
-        this.carHeader = carHeader;
-        this.carDescription = carDescription;
-        this.carPrice = carPrice;
-        this.carCurrency = carCurrency;
-        this.carImagesDownloadUrl = carImagesDownloadUrl;
-        this.carRegion = carRegion;
-        this.carCity = carCity;
-        this.carPhoneNumber = carPhoneNumber;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    // Цена договорная
-    public Car(String carSubCategory, String carModel, String carBrand, String carYear, String carBodyType, String carFuelType,
-               String carDriveUnit, String carColor, String carCppType, String carSteeringWheel, String carCondition, String carEngineCapacity,
-               String carHeader, String carDescription, List<String> carImagesDownloadUrl, String carRegion, String carCity, String carPhoneNumber) {
-        this.carSubCategory = carSubCategory;
-        this.carModel = carModel;
-        this.carBrand = carBrand;
-        this.carYear = carYear;
-        this.carBodyType = carBodyType;
-        this.carFuelType = carFuelType;
-        this.carDriveUnit = carDriveUnit;
-        this.carColor = carColor;
-        this.carCppType = carCppType;
-        this.carSteeringWheel = carSteeringWheel;
-        this.carCondition = carCondition;
-        this.carEngineCapacity = carEngineCapacity;
-        this.carHeader = carHeader;
-        this.carDescription = carDescription;
-        this.carImagesDownloadUrl = carImagesDownloadUrl;
-        this.carRegion = carRegion;
-        this.carCity = carCity;
-        this.carPhoneNumber = carPhoneNumber;
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getCarCategory() {
+        return carCategory;
+    }
+
+    public void setCarCategory(String carCategory) {
+        this.carCategory = carCategory;
     }
 
     public String getCarSubCategory() {

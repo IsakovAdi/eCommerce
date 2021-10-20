@@ -3,22 +3,40 @@ package com.example.ecommerce.models;
 import java.util.List;
 
 public class GoodForFree {
+    private String goodCategory;
     private String goodHeader;
     private String goodDescription;
     private List<String> goodImagesDownloadUrl;
     private String goodRegion;
     private String goodCity;
     private String goodPhoneNumber;
+    private String userID;
+    private String userName;
 
     public GoodForFree(){}
-    public GoodForFree(String goodHeader, String goodDescription, List<String> goodImagesDownloadUrl, String goodRegion, String goodCity,
-                       String goodPhoneNumber) {
-        this.goodHeader = goodHeader;
-        this.goodDescription = goodDescription;
-        this.goodImagesDownloadUrl = goodImagesDownloadUrl;
-        this.goodRegion = goodRegion;
-        this.goodCity = goodCity;
-        this.goodPhoneNumber = goodPhoneNumber;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getGoodCategory() {
+        return goodCategory;
+    }
+
+    public void setGoodCategory(String goodCategory) {
+        this.goodCategory = goodCategory;
     }
 
     public String getGoodHeader() {
